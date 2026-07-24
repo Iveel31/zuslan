@@ -7,6 +7,9 @@
 <meta name="description" content="Төөгөөгийн зуслан руу хэн явахаа бүртгээрэй!" />
 <meta property="og:title" content="🌿 Төөгөөгийн зуслан руу аялцгаая! ☀️" />
 <meta property="og:description" content="Явах бол нэрээ бүртгэ. Хэн хэн явахыг эндээс хараарай!" />
+<meta property="og:image" content="img2.jpg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
@@ -63,6 +66,20 @@
   .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
     padding:22px 20px;margin-top:20px}
   .card.info{background:linear-gradient(135deg,#ffffff 0%,#f2fbff 100%)}
+
+  /* Photos */
+  .photo{position:relative;margin-top:20px;border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);background:#cfeafe;line-height:0}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .photo.tall img{aspect-ratio:4/3}
+  .photo.wide img{aspect-ratio:16/9}
+  .photo .cap{position:absolute;left:0;right:0;bottom:0;line-height:1.3;
+    padding:34px 16px 14px;color:#fff;font-weight:800;font-size:15px;
+    background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 100%);
+    text-shadow:0 1px 6px rgba(0,0,0,.5)}
+  .photo .badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);
+    color:var(--ink);font-weight:800;font-size:13px;padding:6px 12px;border-radius:999px;
+    box-shadow:0 4px 12px rgba(0,0,0,.15)}
 
   .info-row{display:flex;align-items:center;gap:12px;padding:11px 0;font-size:16px;font-weight:600}
   .info-row+.info-row{border-top:1px dashed #dfeef4}
@@ -139,6 +156,12 @@
       <p class="sub">Зуны өдрийг хамтдаа хөгжилтэй өнгөрөөцгөөе! 🌻</p>
     </header>
 
+    <figure class="photo tall">
+      <span class="badge">📍 Очих газар</span>
+      <img src="img2.jpg" alt="Төөгөөгийн зуслан — ногоон тал, уулс, зуслангийн байшингууд" loading="lazy" />
+      <figcaption class="cap">Төөгөөгийн зуслан 🏕️ — ногоон тал, тэнгэрийн доор</figcaption>
+    </figure>
+
     <section class="card info">
       <div class="info-row"><span class="ico">📅</span><span class="lbl">Огноо:</span><span class="val tbd" id="date-val">дараа нь бөглөнө</span></div>
       <div class="info-row"><span class="ico">⏰</span><span class="lbl">Цаг:</span><span class="val tbd" id="time-val">дараа нь бөглөнө</span></div>
@@ -160,6 +183,12 @@
         <button id="btn-leave">Намайг жагсаалтаас хасах</button>
       </div>
     </section>
+
+    <figure class="photo wide">
+      <span class="badge">🏀 Хөгжилтэй байх нь баталгаатай</span>
+      <img src="img1.jpg" alt="Найзууд нар жаргах үед зуслан дээр сагс тоглож байгаа нь" loading="lazy" />
+      <figcaption class="cap">Ийм гоё нар жаргах, найзуудтайгаа хамт 🌅🏀</figcaption>
+    </figure>
 
     <section class="card going">
       <div class="list-head">
