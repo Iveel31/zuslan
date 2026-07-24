@@ -201,7 +201,13 @@
   .list-col .card{margin-top:0;border-radius:0 0 var(--radius) var(--radius);
     padding:16px 15px;flex:1}
   .list-col .list-head h3{font-size:18px}
-  @media (max-width:520px){
+
+  /* Info (огноо/цаг) beside the attendee lists */
+  .top-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:16px;margin-top:20px;align-items:start}
+  .top-grid .card.info{margin-top:0}
+  .top-grid .lists-grid{margin-top:0;grid-template-columns:1fr}
+  @media (max-width:640px){
+    .top-grid{grid-template-columns:1fr}
     .lists-grid{grid-template-columns:1fr}
   }
 
@@ -318,13 +324,6 @@
       <figcaption class="cap">Төөгөөгийн зуслан 🏕️ — ногоон тал, тэнгэрийн доор</figcaption>
     </figure>
 
-    <section class="card info">
-      <div class="info-row"><span class="ico">📅</span><span class="lbl">Огноо:</span><span class="val" id="date-val">7-р сарын 31 – 8-р сарын 2 (Баасан–Ням)</span></div>
-      <div class="info-row"><span class="ico">⏰</span><span class="lbl">Цаг:</span><span class="val tbd" id="time-val">дараа нь бөглөнө</span></div>
-      <div class="info-row"><span class="ico">🌙</span><span class="lbl">Хугацаа:</span><span class="val">3 хоног</span></div>
-      <div class="info-row"><span class="ico">📍</span><span class="lbl">Байршил:</span><span class="val">Төөгөөгийн зуслан</span></div>
-    </section>
-
     <section class="card rsvp">
       <h2>Хэн хэн явах вэ? 🎉</h2>
       <p class="hint">Нэрээ бичээд сонголтоо дараарай. Хүссэн үедээ өөрчилж болно.</p>
@@ -341,7 +340,15 @@
       </div>
     </section>
 
-    <div class="lists-grid">
+    <div class="top-grid">
+      <section class="card info">
+        <div class="info-row"><span class="ico">📅</span><span class="lbl">Огноо:</span><span class="val" id="date-val">7-р сарын 31 – 8-р сарын 2 (Баасан–Ням)</span></div>
+        <div class="info-row"><span class="ico">⏰</span><span class="lbl">Цаг:</span><span class="val tbd" id="time-val">дараа нь бөглөнө</span></div>
+        <div class="info-row"><span class="ico">🌙</span><span class="lbl">Хугацаа:</span><span class="val">3 хоног</span></div>
+        <div class="info-row"><span class="ico">📍</span><span class="lbl">Байршил:</span><span class="val">Төөгөөгийн зуслан</span></div>
+      </section>
+
+      <div class="lists-grid">
       <div class="list-col going">
         <div class="list-photo">
           <span class="badge">🎒 Явцгаая!</span>
@@ -370,6 +377,7 @@
           <ul class="people" id="no-list"></ul>
           <div class="empty" id="no-empty">—</div>
         </section>
+      </div>
       </div>
     </div>
 
