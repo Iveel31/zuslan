@@ -143,9 +143,20 @@
   .hill-mid{animation:sway 7s ease-in-out infinite reverse}
   @keyframes sway{50%{transform:translateX(10px)}}
 
+  /* Real swaying grass along the hilltop */
+  .grass-field{position:fixed;left:0;right:0;bottom:0;height:66px;z-index:0;
+    pointer-events:none;overflow:hidden}
+  .blade{position:absolute;bottom:-2px;transform-origin:50% 100%;
+    border-radius:100% 100% 42% 42% / 92% 92% 7% 7%;
+    box-shadow:inset -1px 0 rgba(0,0,0,.06);will-change:transform;
+    animation:windBlade ease-in-out infinite alternate}
+  @keyframes windBlade{
+    from{transform:rotate(var(--base)) skewX(0deg)}
+    to{transform:rotate(calc(var(--base) + var(--amp))) skewX(5deg)}}
+
   @media (prefers-reduced-motion: reduce){
     body,.sun,.sun-rays,.cloud,.bird,.bird::before,.bird::after,
-    .seed,.fly,.fly span,.hill-back,.hill-mid{animation:none!important}
+    .seed,.fly,.fly span,.hill-back,.hill-mid,.blade{animation:none!important}
     .seed{opacity:.5}
   }
 
@@ -177,9 +188,22 @@
     padding:34px 16px 14px;color:#fff;font-weight:800;font-size:15px;
     background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 100%);
     text-shadow:0 1px 6px rgba(0,0,0,.5)}
-  .photo .badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);
+  .photo .badge,.list-photo .badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);
     color:var(--ink);font-weight:800;font-size:13px;padding:6px 12px;border-radius:999px;
     box-shadow:0 4px 12px rgba(0,0,0,.15)}
+
+  /* Two-side lists, each with a photo header */
+  .lists-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;align-items:start}
+  .list-col{display:flex;flex-direction:column}
+  .list-photo{position:relative;border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;
+    background:#cfeafe;line-height:0}
+  .list-photo img{width:100%;height:150px;object-fit:cover;display:block}
+  .list-col .card{margin-top:0;border-radius:0 0 var(--radius) var(--radius);
+    padding:16px 15px;flex:1}
+  .list-col .list-head h3{font-size:18px}
+  @media (max-width:520px){
+    .lists-grid{grid-template-columns:1fr}
+  }
 
   .info-row{display:flex;align-items:center;gap:12px;padding:11px 0;font-size:16px;font-weight:600}
   .info-row+.info-row{border-top:1px dashed #dfeef4}
@@ -279,6 +303,8 @@
     </svg>
   </div>
 
+  <div class="grass-field" id="grass" aria-hidden="true"></div>
+
   <main class="wrap">
     <header class="hero">
       <div class="leaf">🌿🏕️☀️</div>
@@ -315,29 +341,37 @@
       </div>
     </section>
 
-    <figure class="photo wide">
-      <span class="badge">🏀 Хөгжилтэй байх нь баталгаатай</span>
-      <img src="img1.jpg" alt="Найзууд нар жаргах үед зуслан дээр сагс тоглож байгаа нь" loading="lazy" />
-      <figcaption class="cap">Ийм гоё нар жаргах, найзуудтайгаа хамт 🌅🏀</figcaption>
-    </figure>
-
-    <section class="card going">
-      <div class="list-head">
-        <span class="count-badge" id="going-count">0</span>
-        <h3>Явах хүмүүс</h3>
+    <div class="lists-grid">
+      <div class="list-col going">
+        <div class="list-photo">
+          <span class="badge">🎒 Явцгаая!</span>
+          <img src="img1.jpg" alt="Найзууд нар жаргах үед зуслан дээр сагс тоглож байгаа нь" loading="lazy" />
+        </div>
+        <section class="card">
+          <div class="list-head">
+            <span class="count-badge" id="going-count">0</span>
+            <h3>Явах хүмүүс</h3>
+          </div>
+          <ul class="people" id="going-list"></ul>
+          <div class="empty" id="going-empty">Одоохондоо хэн ч бүртгүүлээгүй байна. Эхнийх нь бол! 🚀</div>
+        </section>
       </div>
-      <ul class="people" id="going-list"></ul>
-      <div class="empty" id="going-empty">Одоохондоо хэн ч бүртгүүлээгүй байна. Эхнийх нь бол! 🚀</div>
-    </section>
 
-    <section class="card notgoing">
-      <div class="list-head">
-        <span class="count-badge" id="no-count">0</span>
-        <h3>Явахгүй хүмүүс</h3>
+      <div class="list-col notgoing">
+        <div class="list-photo">
+          <span class="badge">💤 Дараагийнд</span>
+          <img src="img2.jpg" alt="Төөгөөгийн зуслан — ногоон тал, тэнгэрийн доор" loading="lazy" />
+        </div>
+        <section class="card">
+          <div class="list-head">
+            <span class="count-badge" id="no-count">0</span>
+            <h3>Явахгүй хүмүүс</h3>
+          </div>
+          <ul class="people" id="no-list"></ul>
+          <div class="empty" id="no-empty">—</div>
+        </section>
       </div>
-      <ul class="people" id="no-list"></ul>
-      <div class="empty" id="no-empty">—</div>
-    </section>
+    </div>
 
     <div class="footer">
       <span class="grass">🌱🌿🌾🌻🌿🌱</span>
