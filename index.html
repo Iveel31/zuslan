@@ -1,602 +1,1523 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="mn">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>🌿 Төөгөөгийн зуслан ☀️</title>
-<meta name="description" content="Төөгөөгийн зуслан руу хэн явахаа бүртгээрэй!" />
-<meta property="og:title" content="🌿 Төөгөөгийн зуслан руу аялцгаая! ☀️" />
-<meta property="og:description" content="Явах бол нэрээ бүртгэ. Хэн хэн явахыг эндээс хараарай!" />
-<meta property="og:image" content="img2.jpg" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
-<style>
-  :root{
-    --sky:#4db8ff; --sky-deep:#2196f3; --sky-soft:#bfe6ff;
-    --green:#3ec46d; --green-deep:#22a04f;
-    --yellow:#ffd23f; --yellow-deep:#f9b21a;
-    --ink:#173a4a; --muted:#5b7c8a; --white:#ffffff;
-    --shadow:0 14px 40px rgba(23,58,74,.16);
-    --radius:22px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{min-height:100%;background:#a8e0ff}
-  body{
-    font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
-    color:var(--ink);
-    background:
-      radial-gradient(120% 80% at 82% -10%,rgba(255,241,176,.55) 0%,rgba(255,241,176,0) 42%),
-      linear-gradient(180deg,#5fb8f7 0%,#7fd0ff 26%,#a8e0ff 50%,#cdefe0 74%,#e2f7e8 100%);
-    background-size:auto, 100% 220%;
-    background-position:center, center 0%;
-    background-attachment:fixed;
-    background-repeat:no-repeat;
-    animation:skyShift 26s ease-in-out infinite;
-    min-height:100vh;
-    -webkit-tap-highlight-color:transparent;
-    overflow-x:hidden;
-  }
-  @keyframes skyShift{50%{background-position:center, center 100%}}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌿 Төөгөөгийн зуслан ☀️</title>
+    <meta
+      name="description"
+      content="Төөгөөгийн зуслан руу хэн явахаа бүртгээрэй!"
+    />
+    <meta property="og:title" content="🌿 Төөгөөгийн зуслан руу аялцгаая! ☀️" />
+    <meta
+      property="og:description"
+      content="Явах бол нэрээ бүртгэ. Хэн хэн явахыг эндээс хараарай!"
+    />
+    <meta property="og:image" content="img2.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap&subset=cyrillic,cyrillic-ext,latin"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --sky: #4db8ff;
+        --sky-deep: #2196f3;
+        --sky-soft: #bfe6ff;
+        --green: #3ec46d;
+        --green-deep: #22a04f;
+        --yellow: #ffd23f;
+        --yellow-deep: #f9b21a;
+        --ink: #173a4a;
+        --muted: #5b7c8a;
+        --white: #ffffff;
+        --shadow: 0 14px 40px rgba(23, 58, 74, 0.16);
+        --radius: 22px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        min-height: 100%;
+        background: #a8e0ff;
+      }
+      body {
+        font-family:
+          "Nunito",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            120% 80% at 82% -10%,
+            rgba(255, 241, 176, 0.55) 0%,
+            rgba(255, 241, 176, 0) 42%
+          ),
+          linear-gradient(
+            180deg,
+            #5fb8f7 0%,
+            #7fd0ff 26%,
+            #a8e0ff 50%,
+            #cdefe0 74%,
+            #e2f7e8 100%
+          );
+        background-size:
+          auto,
+          100% 220%;
+        background-position:
+          center,
+          center 0%;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        animation: skyShift 26s ease-in-out infinite;
+        min-height: 100vh;
+        -webkit-tap-highlight-color: transparent;
+        overflow-x: hidden;
+      }
+      @keyframes skyShift {
+        50% {
+          background-position:
+            center,
+            center 100%;
+        }
+      }
 
-  /* Sky decoration */
-  .sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+      /* Sky decoration */
+      .sky {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
 
-  /* Sun with rotating rays */
-  .sun-wrap{position:absolute;top:-60px;right:-60px;width:220px;height:220px}
-  .sun-rays{position:absolute;inset:0;border-radius:50%;
-    background:conic-gradient(from 0deg,
-      rgba(255,225,120,.0) 0deg,rgba(255,225,120,.45) 8deg,rgba(255,225,120,0) 22deg,
-      rgba(255,225,120,0) 30deg,rgba(255,225,120,.45) 38deg,rgba(255,225,120,0) 52deg,
-      rgba(255,225,120,0) 60deg,rgba(255,225,120,.45) 68deg,rgba(255,225,120,0) 82deg,
-      rgba(255,225,120,0) 90deg,rgba(255,225,120,.45) 98deg,rgba(255,225,120,0) 112deg,
-      rgba(255,225,120,0) 120deg,rgba(255,225,120,.45) 128deg,rgba(255,225,120,0) 142deg,
-      rgba(255,225,120,0) 150deg,rgba(255,225,120,.45) 158deg,rgba(255,225,120,0) 172deg,
-      rgba(255,225,120,0) 180deg,rgba(255,225,120,.45) 188deg,rgba(255,225,120,0) 202deg,
-      rgba(255,225,120,0) 210deg,rgba(255,225,120,.45) 218deg,rgba(255,225,120,0) 232deg,
-      rgba(255,225,120,0) 240deg,rgba(255,225,120,.45) 248deg,rgba(255,225,120,0) 262deg,
-      rgba(255,225,120,0) 270deg,rgba(255,225,120,.45) 278deg,rgba(255,225,120,0) 292deg,
-      rgba(255,225,120,0) 300deg,rgba(255,225,120,.45) 308deg,rgba(255,225,120,0) 322deg,
-      rgba(255,225,120,0) 330deg,rgba(255,225,120,.45) 338deg,rgba(255,225,120,0) 352deg,
-      rgba(255,225,120,0) 360deg);
-    -webkit-mask:radial-gradient(circle,transparent 46%,#000 50%,transparent 82%);
-    mask:radial-gradient(circle,transparent 46%,#000 50%,transparent 82%);
-    animation:spin 90s linear infinite;opacity:.85}
-  .sun{position:absolute;top:50%;left:50%;width:150px;height:150px;margin:-75px 0 0 -75px;
-    border-radius:50%;
-    background:radial-gradient(circle at 42% 40%,#fffbe0 0%,#fff2a8 40%,var(--yellow) 68%,var(--yellow-deep) 100%);
-    box-shadow:0 0 70px 22px rgba(255,210,63,.5),0 0 130px 50px rgba(255,210,63,.25);
-    animation:pulse 5s ease-in-out infinite}
-  @keyframes pulse{50%{transform:scale(1.05)}}
-  @keyframes spin{to{transform:rotate(360deg)}}
+      /* Sun with rotating rays */
+      .sun-wrap {
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 220px;
+        height: 220px;
+      }
+      .sun-rays {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(
+          from 0deg,
+          rgba(255, 225, 120, 0) 0deg,
+          rgba(255, 225, 120, 0.45) 8deg,
+          rgba(255, 225, 120, 0) 22deg,
+          rgba(255, 225, 120, 0) 30deg,
+          rgba(255, 225, 120, 0.45) 38deg,
+          rgba(255, 225, 120, 0) 52deg,
+          rgba(255, 225, 120, 0) 60deg,
+          rgba(255, 225, 120, 0.45) 68deg,
+          rgba(255, 225, 120, 0) 82deg,
+          rgba(255, 225, 120, 0) 90deg,
+          rgba(255, 225, 120, 0.45) 98deg,
+          rgba(255, 225, 120, 0) 112deg,
+          rgba(255, 225, 120, 0) 120deg,
+          rgba(255, 225, 120, 0.45) 128deg,
+          rgba(255, 225, 120, 0) 142deg,
+          rgba(255, 225, 120, 0) 150deg,
+          rgba(255, 225, 120, 0.45) 158deg,
+          rgba(255, 225, 120, 0) 172deg,
+          rgba(255, 225, 120, 0) 180deg,
+          rgba(255, 225, 120, 0.45) 188deg,
+          rgba(255, 225, 120, 0) 202deg,
+          rgba(255, 225, 120, 0) 210deg,
+          rgba(255, 225, 120, 0.45) 218deg,
+          rgba(255, 225, 120, 0) 232deg,
+          rgba(255, 225, 120, 0) 240deg,
+          rgba(255, 225, 120, 0.45) 248deg,
+          rgba(255, 225, 120, 0) 262deg,
+          rgba(255, 225, 120, 0) 270deg,
+          rgba(255, 225, 120, 0.45) 278deg,
+          rgba(255, 225, 120, 0) 292deg,
+          rgba(255, 225, 120, 0) 300deg,
+          rgba(255, 225, 120, 0.45) 308deg,
+          rgba(255, 225, 120, 0) 322deg,
+          rgba(255, 225, 120, 0) 330deg,
+          rgba(255, 225, 120, 0.45) 338deg,
+          rgba(255, 225, 120, 0) 352deg,
+          rgba(255, 225, 120, 0) 360deg
+        );
+        -webkit-mask: radial-gradient(
+          circle,
+          transparent 46%,
+          #000 50%,
+          transparent 82%
+        );
+        mask: radial-gradient(
+          circle,
+          transparent 46%,
+          #000 50%,
+          transparent 82%
+        );
+        animation: spin 90s linear infinite;
+        opacity: 0.85;
+      }
+      .sun {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 42% 40%,
+          #fffbe0 0%,
+          #fff2a8 40%,
+          var(--yellow) 68%,
+          var(--yellow-deep) 100%
+        );
+        box-shadow:
+          0 0 70px 22px rgba(255, 210, 63, 0.5),
+          0 0 130px 50px rgba(255, 210, 63, 0.25);
+        animation: pulse 5s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        50% {
+          transform: scale(1.05);
+        }
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-  /* Clouds */
-  .cloud{position:absolute;background:rgba(255,255,255,.9);border-radius:50px;
-    filter:blur(.3px) drop-shadow(0 8px 12px rgba(80,140,180,.18))}
-  .cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
-  .c1{width:120px;height:34px;top:90px;animation:float-l 46s linear infinite}
-  .c1::before{width:52px;height:52px;top:-24px;left:20px}
-  .c1::after{width:38px;height:38px;top:-16px;left:64px}
-  .c2{width:90px;height:26px;top:200px;opacity:.85;transform:scale(.9);animation:float-r 62s linear infinite}
-  .c2::before{width:40px;height:40px;top:-18px;left:14px}
-  .c2::after{width:30px;height:30px;top:-12px;left:48px}
-  .c3{width:150px;height:40px;top:340px;opacity:.7;animation:float-l 78s linear infinite;animation-delay:-20s}
-  .c3::before{width:64px;height:64px;top:-30px;left:26px}
-  .c3::after{width:46px;height:46px;top:-20px;left:80px}
-  .c4{width:70px;height:20px;top:150px;opacity:.6;transform:scale(.85);animation:float-r 90s linear infinite;animation-delay:-40s}
-  .c4::before{width:32px;height:32px;top:-14px;left:12px}
-  .c4::after{width:24px;height:24px;top:-9px;left:38px}
-  @keyframes float-l{
-    0%{transform:translateX(-140px)}
-    100%{transform:translateX(calc(100vw + 60px))}}
-  @keyframes float-r{
-    0%{transform:translateX(calc(100vw + 60px))}
-    100%{transform:translateX(-160px)}}
+      /* Clouds */
+      .cloud {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50px;
+        filter: blur(0.3px) drop-shadow(0 8px 12px rgba(80, 140, 180, 0.18));
+      }
+      .cloud::before,
+      .cloud::after {
+        content: "";
+        position: absolute;
+        background: inherit;
+        border-radius: 50%;
+      }
+      .c1 {
+        width: 120px;
+        height: 34px;
+        top: 90px;
+        animation: float-l 46s linear infinite;
+      }
+      .c1::before {
+        width: 52px;
+        height: 52px;
+        top: -24px;
+        left: 20px;
+      }
+      .c1::after {
+        width: 38px;
+        height: 38px;
+        top: -16px;
+        left: 64px;
+      }
+      .c2 {
+        width: 90px;
+        height: 26px;
+        top: 200px;
+        opacity: 0.85;
+        transform: scale(0.9);
+        animation: float-r 62s linear infinite;
+      }
+      .c2::before {
+        width: 40px;
+        height: 40px;
+        top: -18px;
+        left: 14px;
+      }
+      .c2::after {
+        width: 30px;
+        height: 30px;
+        top: -12px;
+        left: 48px;
+      }
+      .c3 {
+        width: 150px;
+        height: 40px;
+        top: 340px;
+        opacity: 0.7;
+        animation: float-l 78s linear infinite;
+        animation-delay: -20s;
+      }
+      .c3::before {
+        width: 64px;
+        height: 64px;
+        top: -30px;
+        left: 26px;
+      }
+      .c3::after {
+        width: 46px;
+        height: 46px;
+        top: -20px;
+        left: 80px;
+      }
+      .c4 {
+        width: 70px;
+        height: 20px;
+        top: 150px;
+        opacity: 0.6;
+        transform: scale(0.85);
+        animation: float-r 90s linear infinite;
+        animation-delay: -40s;
+      }
+      .c4::before {
+        width: 32px;
+        height: 32px;
+        top: -14px;
+        left: 12px;
+      }
+      .c4::after {
+        width: 24px;
+        height: 24px;
+        top: -9px;
+        left: 38px;
+      }
+      @keyframes float-l {
+        0% {
+          transform: translateX(-140px);
+        }
+        100% {
+          transform: translateX(calc(100vw + 60px));
+        }
+      }
+      @keyframes float-r {
+        0% {
+          transform: translateX(calc(100vw + 60px));
+        }
+        100% {
+          transform: translateX(-160px);
+        }
+      }
 
-  /* Birds */
-  .bird{position:absolute;width:20px;height:20px;color:rgba(35,70,95,.55);
-    animation:fly 24s linear infinite}
-  .bird::before,.bird::after{content:"";position:absolute;top:6px;width:11px;height:11px;
-    border-top:2.5px solid currentColor;border-radius:50%}
-  .bird::before{left:0;border-right:2.5px solid transparent;transform-origin:right center;
-    animation:flap 1.1s ease-in-out infinite}
-  .bird::after{right:0;border-left:2.5px solid transparent;transform-origin:left center;
-    animation:flap 1.1s ease-in-out infinite}
-  .b1{top:130px;transform:scale(1);animation-delay:0s}
-  .b2{top:170px;transform:scale(.7);animation-delay:-6s;opacity:.8}
-  .b3{top:110px;transform:scale(.85);animation-delay:-14s;opacity:.7}
-  @keyframes flap{50%{transform:rotate(24deg)}}
-  @keyframes fly{
-    0%{transform:translate(-40px,0)}
-    100%{transform:translate(calc(100vw + 40px),40px)}}
+      /* Birds */
+      .bird {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        color: rgba(35, 70, 95, 0.55);
+        animation: fly 24s linear infinite;
+      }
+      .bird::before,
+      .bird::after {
+        content: "";
+        position: absolute;
+        top: 6px;
+        width: 11px;
+        height: 11px;
+        border-top: 2.5px solid currentColor;
+        border-radius: 50%;
+      }
+      .bird::before {
+        left: 0;
+        border-right: 2.5px solid transparent;
+        transform-origin: right center;
+        animation: flap 1.1s ease-in-out infinite;
+      }
+      .bird::after {
+        right: 0;
+        border-left: 2.5px solid transparent;
+        transform-origin: left center;
+        animation: flap 1.1s ease-in-out infinite;
+      }
+      .b1 {
+        top: 130px;
+        transform: scale(1);
+        animation-delay: 0s;
+      }
+      .b2 {
+        top: 170px;
+        transform: scale(0.7);
+        animation-delay: -6s;
+        opacity: 0.8;
+      }
+      .b3 {
+        top: 110px;
+        transform: scale(0.85);
+        animation-delay: -14s;
+        opacity: 0.7;
+      }
+      @keyframes flap {
+        50% {
+          transform: rotate(24deg);
+        }
+      }
+      @keyframes fly {
+        0% {
+          transform: translate(-40px, 0);
+        }
+        100% {
+          transform: translate(calc(100vw + 40px), 40px);
+        }
+      }
 
-  /* Floating dandelion / pollen particles */
-  .seed{position:absolute;bottom:-20px;width:8px;height:8px;border-radius:50%;
-    background:radial-gradient(circle at 40% 40%,#fff,#eafff2);
-    box-shadow:0 0 6px 2px rgba(255,255,255,.6);opacity:0;
-    animation:rise linear infinite}
-  @keyframes rise{
-    0%{opacity:0;transform:translate(0,0) scale(.6)}
-    10%{opacity:.9}
-    50%{transform:translate(28px,-46vh) scale(1)}
-    90%{opacity:.7}
-    100%{opacity:0;transform:translate(-14px,-96vh) scale(.7)}}
+      /* Floating dandelion / pollen particles */
+      .seed {
+        position: absolute;
+        bottom: -20px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 40% 40%, #fff, #eafff2);
+        box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.6);
+        opacity: 0;
+        animation: rise linear infinite;
+      }
+      @keyframes rise {
+        0% {
+          opacity: 0;
+          transform: translate(0, 0) scale(0.6);
+        }
+        10% {
+          opacity: 0.9;
+        }
+        50% {
+          transform: translate(28px, -46vh) scale(1);
+        }
+        90% {
+          opacity: 0.7;
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-14px, -96vh) scale(0.7);
+        }
+      }
 
-  /* Butterflies */
-  .fly{position:absolute;font-size:22px;filter:drop-shadow(0 3px 5px rgba(0,0,0,.12));
-    animation:wander 20s ease-in-out infinite}
-  .fly span{display:inline-block;animation:flutter .5s ease-in-out infinite}
-  @keyframes flutter{50%{transform:scaleX(.55) rotate(-4deg)}}
-  @keyframes wander{
-    0%{transform:translate(0,0) rotate(-6deg)}
-    25%{transform:translate(22vw,-6vh) rotate(6deg)}
-    50%{transform:translate(46vw,4vh) rotate(-4deg)}
-    75%{transform:translate(24vw,-8vh) rotate(8deg)}
-    100%{transform:translate(0,0) rotate(-6deg)}}
+      /* Butterflies */
+      .fly {
+        position: absolute;
+        font-size: 22px;
+        filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.12));
+        animation: wander 20s ease-in-out infinite;
+      }
+      .fly span {
+        display: inline-block;
+        animation: flutter 0.5s ease-in-out infinite;
+      }
+      @keyframes flutter {
+        50% {
+          transform: scaleX(0.55) rotate(-4deg);
+        }
+      }
+      @keyframes wander {
+        0% {
+          transform: translate(0, 0) rotate(-6deg);
+        }
+        25% {
+          transform: translate(22vw, -6vh) rotate(6deg);
+        }
+        50% {
+          transform: translate(46vw, 4vh) rotate(-4deg);
+        }
+        75% {
+          transform: translate(24vw, -8vh) rotate(8deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(-6deg);
+        }
+      }
 
-  /* Rolling hills at the bottom */
-  .hills{position:fixed;left:0;right:0;bottom:0;z-index:0;pointer-events:none;line-height:0}
-  .hills svg{display:block;width:100%;height:auto}
-  .hill-back{animation:sway 9s ease-in-out infinite}
-  .hill-mid{animation:sway 7s ease-in-out infinite reverse}
-  @keyframes sway{50%{transform:translateX(10px)}}
+      /* Rolling hills at the bottom */
+      .hills {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        pointer-events: none;
+        line-height: 0;
+      }
+      .hills svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .hill-back {
+        animation: sway 9s ease-in-out infinite;
+      }
+      .hill-mid {
+        animation: sway 7s ease-in-out infinite reverse;
+      }
+      @keyframes sway {
+        50% {
+          transform: translateX(10px);
+        }
+      }
 
-  /* Real swaying grass along the hilltop */
-  .grass-field{position:fixed;left:0;right:0;bottom:0;height:66px;z-index:0;
-    pointer-events:none;overflow:hidden}
-  .blade{position:absolute;bottom:-2px;transform-origin:50% 100%;
-    border-radius:100% 100% 42% 42% / 92% 92% 7% 7%;
-    box-shadow:inset -1px 0 rgba(0,0,0,.06);will-change:transform;
-    animation:windBlade ease-in-out infinite alternate}
-  @keyframes windBlade{
-    from{transform:rotate(var(--base)) skewX(0deg)}
-    to{transform:rotate(calc(var(--base) + var(--amp))) skewX(5deg)}}
+      /* Real swaying grass along the hilltop */
+      .grass-field {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 66px;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .blade {
+        position: absolute;
+        bottom: -2px;
+        transform-origin: 50% 100%;
+        border-radius: 100% 100% 42% 42% / 92% 92% 7% 7%;
+        box-shadow: inset -1px 0 rgba(0, 0, 0, 0.06);
+        will-change: transform;
+        animation: windBlade ease-in-out infinite alternate;
+      }
+      @keyframes windBlade {
+        from {
+          transform: rotate(var(--base)) skewX(0deg);
+        }
+        to {
+          transform: rotate(calc(var(--base) + var(--amp))) skewX(5deg);
+        }
+      }
 
-  @media (prefers-reduced-motion: reduce){
-    body,.sun,.sun-rays,.cloud,.bird,.bird::before,.bird::after,
-    .seed,.fly,.fly span,.hill-back,.hill-mid,.blade{animation:none!important}
-    .seed{opacity:.5}
-  }
+      @media (prefers-reduced-motion: reduce) {
+        body,
+        .sun,
+        .sun-rays,
+        .cloud,
+        .bird,
+        .bird::before,
+        .bird::after,
+        .seed,
+        .fly,
+        .fly span,
+        .hill-back,
+        .hill-mid,
+        .blade {
+          animation: none !important;
+        }
+        .seed {
+          opacity: 0.5;
+        }
+      }
 
-  .wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:22px 16px 60px}
+      /* Scale the sky decoration down on phones so it stays tidy */
+      @media (max-width: 560px) {
+        .sun-wrap {
+          width: 150px;
+          height: 150px;
+          top: -44px;
+          right: -44px;
+        }
+        .sun {
+          width: 104px;
+          height: 104px;
+          margin: -52px 0 0 -52px;
+        }
+      }
 
-  /* Hero */
-  .hero{text-align:center;padding:26px 14px 20px}
-  .hero .leaf{font-size:30px}
-  .hero h1{
-    font-family:'Baloo 2',sans-serif;font-weight:800;line-height:1.05;
-    font-size:clamp(30px,8.5vw,46px);color:var(--white);
-    text-shadow:0 3px 0 rgba(34,160,79,.35),0 10px 24px rgba(23,58,74,.28);
-    margin:6px 0 10px;letter-spacing:.5px}
-  .hero p.sub{font-weight:700;font-size:clamp(15px,4.2vw,19px);color:#0d5a34;
-    background:rgba(255,255,255,.55);display:inline-block;padding:7px 16px;border-radius:999px}
+      .wrap {
+        position: relative;
+        z-index: 1;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: clamp(16px, 4vw, 24px) clamp(12px, 4vw, 18px) 96px;
+      }
 
-  /* Card */
-  .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
-    padding:22px 20px;margin-top:20px}
-  .card.info{background:linear-gradient(135deg,#ffffff 0%,#f2fbff 100%)}
+      /* Hero */
+      .hero {
+        text-align: center;
+        padding: 26px 14px 20px;
+      }
+      .hero .leaf {
+        font-size: 30px;
+      }
+      .hero h1 {
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 800;
+        line-height: 1.05;
+        font-size: clamp(30px, 8.5vw, 46px);
+        color: var(--white);
+        text-shadow:
+          0 3px 0 rgba(34, 160, 79, 0.35),
+          0 10px 24px rgba(23, 58, 74, 0.28);
+        margin: 6px 0 10px;
+        letter-spacing: 0.5px;
+      }
+      .hero p.sub {
+        font-weight: 700;
+        font-size: clamp(15px, 4.2vw, 19px);
+        color: #0d5a34;
+        background: rgba(255, 255, 255, 0.55);
+        display: inline-block;
+        padding: 7px 16px;
+        border-radius: 999px;
+      }
 
-  /* Photos */
-  .photo{position:relative;margin-top:20px;border-radius:var(--radius);overflow:hidden;
-    box-shadow:var(--shadow);background:#cfeafe;line-height:0}
-  .photo img{width:100%;height:100%;object-fit:cover;display:block}
-  .photo.tall img{aspect-ratio:4/3}
-  .photo.wide img{aspect-ratio:16/9}
-  .photo .cap{position:absolute;left:0;right:0;bottom:0;line-height:1.3;
-    padding:34px 16px 14px;color:#fff;font-weight:800;font-size:15px;
-    background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 100%);
-    text-shadow:0 1px 6px rgba(0,0,0,.5)}
-  .photo .badge,.list-photo .badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);
-    color:var(--ink);font-weight:800;font-size:13px;padding:6px 12px;border-radius:999px;
-    box-shadow:0 4px 12px rgba(0,0,0,.15)}
+      /* Card */
+      .card {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 22px 20px;
+        margin-top: 20px;
+      }
+      .card.info {
+        background: linear-gradient(135deg, #ffffff 0%, #f2fbff 100%);
+      }
 
-  /* Two-side lists, each with a photo header */
-  .lists-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;align-items:start}
-  .list-col{display:flex;flex-direction:column}
-  .list-photo{position:relative;border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;
-    background:#cfeafe;line-height:0}
-  .list-photo img{width:100%;height:150px;object-fit:cover;display:block}
-  .list-col .card{margin-top:0;border-radius:0 0 var(--radius) var(--radius);
-    padding:16px 15px;flex:1}
-  .list-col .list-head h3{font-size:18px}
+      /* Photos */
+      .photo {
+        position: relative;
+        margin-top: 20px;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        background: #cfeafe;
+        line-height: 0;
+      }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .photo.tall img {
+        aspect-ratio: 4/3;
+      }
+      .photo.wide img {
+        aspect-ratio: 16/9;
+      }
+      .photo .cap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        line-height: 1.3;
+        padding: 34px 16px 14px;
+        color: #fff;
+        font-weight: 800;
+        font-size: 15px;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.55) 100%
+        );
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+      }
+      .photo .badge,
+      .list-photo .badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ink);
+        font-weight: 800;
+        font-size: 13px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
 
-  /* Info (огноо/цаг) beside the attendee lists */
-  .top-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:16px;margin-top:20px;align-items:start}
-  .top-grid .card.info{margin-top:0}
-  .top-grid .lists-grid{margin-top:0;grid-template-columns:1fr}
-  @media (max-width:640px){
-    .top-grid{grid-template-columns:1fr}
-    .lists-grid{grid-template-columns:1fr}
-  }
+      /* Two attendee lists side by side, each with a photo header */
+      .lists-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 20px;
+        align-items: start;
+      }
+      .list-col {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .list-photo {
+        position: relative;
+        border-radius: var(--radius) var(--radius) 0 0;
+        overflow: hidden;
+        background: #cfeafe;
+        line-height: 0;
+      }
+      .list-photo img {
+        width: 100%;
+        height: clamp(120px, 24vw, 170px);
+        object-fit: cover;
+        display: block;
+      }
+      .list-col .card {
+        margin-top: 0;
+        border-radius: 0 0 var(--radius) var(--radius);
+        padding: 16px 15px;
+        flex: 1;
+      }
+      .list-col .list-head h3 {
+        font-size: 18px;
+      }
 
-  .info-row{display:flex;align-items:center;gap:12px;padding:11px 0;font-size:16px;font-weight:600}
-  .info-row+.info-row{border-top:1px dashed #dfeef4}
-  .info-row .ico{font-size:22px;flex:none;width:30px;text-align:center}
-  .info-row .lbl{color:var(--muted);font-weight:700;flex:none}
-  .info-row .val{color:var(--ink);font-weight:800}
-  .info-row .val.tbd{color:#a7b9c2;font-style:italic;font-weight:700}
+      /* On narrow screens the two lists stack into one column */
+      @media (max-width: 560px) {
+        .lists-grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-  /* RSVP */
-  .rsvp h2{font-family:'Baloo 2',sans-serif;font-size:22px;color:var(--ink);margin-bottom:4px}
-  .rsvp .hint{color:var(--muted);font-weight:600;font-size:14px;margin-bottom:16px}
-  .field{position:relative;margin-bottom:14px}
-  .field input{width:100%;padding:15px 16px;font-size:17px;font-weight:700;font-family:inherit;
-    border:2px solid #d7ebf3;border-radius:16px;color:var(--ink);background:#f7fcff;outline:none;
-    transition:border-color .15s,box-shadow .15s}
-  .field input::placeholder{color:#a7c2ce;font-weight:600}
-  .field input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(77,184,255,.18);background:#fff}
+      .info-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 0;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .info-row + .info-row {
+        border-top: 1px dashed #dfeef4;
+      }
+      .info-row .ico {
+        font-size: 22px;
+        flex: none;
+        width: 30px;
+        text-align: center;
+      }
+      .info-row .lbl {
+        color: var(--muted);
+        font-weight: 700;
+        flex: none;
+      }
+      .info-row .val {
+        color: var(--ink);
+        font-weight: 800;
+      }
+      .info-row .val.tbd {
+        color: #a7b9c2;
+        font-style: italic;
+        font-weight: 700;
+      }
 
-  .btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  button{font-family:inherit;font-weight:800;cursor:pointer;border:none;border-radius:16px;
-    font-size:17px;padding:15px 10px;transition:transform .12s,box-shadow .12s,filter .12s;
-    -webkit-user-select:none;user-select:none}
-  button:active{transform:translateY(2px) scale(.99)}
-  .btn-go{background:linear-gradient(135deg,var(--green) 0%,var(--green-deep) 100%);color:#fff;
-    box-shadow:0 8px 18px rgba(34,160,79,.35)}
-  .btn-no{background:#fff;color:#e26d5c;border:2px solid #ffd9d2;box-shadow:0 6px 14px rgba(226,109,92,.12)}
-  button:disabled{filter:grayscale(.4) opacity(.6);cursor:wait}
-  .btn-go.active{outline:4px solid rgba(34,160,79,.25)}
-  .btn-no.active{outline:4px solid rgba(226,109,92,.22)}
+      /* RSVP */
+      .rsvp h2 {
+        font-family: "Baloo 2", sans-serif;
+        font-size: 22px;
+        color: var(--ink);
+        margin-bottom: 4px;
+      }
+      .rsvp .hint {
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+      .field {
+        position: relative;
+        margin-bottom: 14px;
+      }
+      .field input {
+        width: 100%;
+        padding: 15px 16px;
+        font-size: 17px;
+        font-weight: 700;
+        font-family: inherit;
+        border: 2px solid #d7ebf3;
+        border-radius: 16px;
+        color: var(--ink);
+        background: #f7fcff;
+        outline: none;
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s;
+      }
+      .field input::placeholder {
+        color: #a7c2ce;
+        font-weight: 600;
+      }
+      .field input:focus {
+        border-color: var(--sky);
+        box-shadow: 0 0 0 4px rgba(77, 184, 255, 0.18);
+        background: #fff;
+      }
 
-  .status{text-align:center;font-weight:700;font-size:14px;min-height:20px;margin-top:12px}
-  .status.ok{color:var(--green-deep)}
-  .status.err{color:#e26d5c}
+      .btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      button {
+        font-family: inherit;
+        font-weight: 800;
+        cursor: pointer;
+        border: none;
+        border-radius: 16px;
+        font-size: 17px;
+        padding: 15px 10px;
+        transition:
+          transform 0.12s,
+          box-shadow 0.12s,
+          filter 0.12s;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      button:active {
+        transform: translateY(2px) scale(0.99);
+      }
+      .btn-go {
+        background: linear-gradient(
+          135deg,
+          var(--green) 0%,
+          var(--green-deep) 100%
+        );
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(34, 160, 79, 0.35);
+      }
+      .btn-no {
+        background: #fff;
+        color: #e26d5c;
+        border: 2px solid #ffd9d2;
+        box-shadow: 0 6px 14px rgba(226, 109, 92, 0.12);
+      }
+      button:disabled {
+        filter: grayscale(0.4) opacity(0.6);
+        cursor: wait;
+      }
+      .btn-go.active {
+        outline: 4px solid rgba(34, 160, 79, 0.25);
+      }
+      .btn-no.active {
+        outline: 4px solid rgba(226, 109, 92, 0.22);
+      }
 
-  /* Lists */
-  .count-badge{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;
-    padding:0 9px;border-radius:999px;font-family:'Baloo 2',sans-serif;font-size:16px;font-weight:800;color:#fff}
-  .going .count-badge{background:linear-gradient(135deg,var(--green),var(--green-deep))}
-  .notgoing .count-badge{background:#c7d6dd}
-  .list-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-  .list-head h3{font-family:'Baloo 2',sans-serif;font-size:20px}
-  ul.people{list-style:none;display:flex;flex-direction:column;gap:9px}
-  ul.people li{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;
-    font-weight:700;font-size:16px;animation:pop .25s ease}
-  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .going ul.people li{background:linear-gradient(135deg,#eafaf0,#dff5e7)}
-  .notgoing ul.people li{background:#f3f7f9;color:var(--muted)}
-  .avatar{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
-    font-family:'Baloo 2',sans-serif;font-weight:800;color:#fff;font-size:16px}
-  li .name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  li .me-tag{flex:none;font-size:11px;font-weight:800;color:var(--green-deep);
-    background:#d3f3de;padding:3px 8px;border-radius:999px}
-  .empty{color:#a7b9c2;font-weight:700;text-align:center;padding:14px 0}
+      .status {
+        text-align: center;
+        font-weight: 700;
+        font-size: 14px;
+        min-height: 20px;
+        margin-top: 12px;
+      }
+      .status.ok {
+        color: var(--green-deep);
+      }
+      .status.err {
+        color: #e26d5c;
+      }
 
-  .leave{display:block;text-align:center;margin-top:16px}
-  .leave[hidden]{display:none}
-  .leave button{background:none;border:none;color:var(--muted);font-size:13px;font-weight:700;
-    text-decoration:underline;padding:6px;box-shadow:none}
+      /* Lists */
+      .count-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 30px;
+        height: 30px;
+        padding: 0 9px;
+        border-radius: 999px;
+        font-family: "Baloo 2", sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        color: #fff;
+      }
+      .going .count-badge {
+        background: linear-gradient(135deg, var(--green), var(--green-deep));
+      }
+      .notgoing .count-badge {
+        background: #c7d6dd;
+      }
+      .list-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .list-head h3 {
+        font-family: "Baloo 2", sans-serif;
+        font-size: 20px;
+      }
+      ul.people {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      ul.people li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 14px;
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 16px;
+        animation: pop 0.25s ease;
+      }
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .going ul.people li {
+        background: linear-gradient(135deg, #eafaf0, #dff5e7);
+      }
+      .notgoing ul.people li {
+        background: #f3f7f9;
+        color: var(--muted);
+      }
+      .avatar {
+        flex: none;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 800;
+        color: #fff;
+        font-size: 16px;
+      }
+      li .name {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      li .me-tag {
+        flex: none;
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--green-deep);
+        background: #d3f3de;
+        padding: 3px 8px;
+        border-radius: 999px;
+      }
+      .empty {
+        color: #a7b9c2;
+        font-weight: 700;
+        text-align: center;
+        padding: 14px 0;
+      }
 
-  .footer{text-align:center;color:#3a6b53;font-weight:700;font-size:13px;margin-top:28px;opacity:.85}
-  .footer .grass{font-size:20px;letter-spacing:2px;display:block;margin-bottom:6px}
-</style>
-</head>
-<body>
-  <div class="sky" aria-hidden="true">
-    <div class="sun-wrap">
-      <div class="sun-rays"></div>
-      <div class="sun"></div>
+      .leave {
+        display: block;
+        text-align: center;
+        margin-top: 16px;
+      }
+      .leave[hidden] {
+        display: none;
+      }
+      .leave button {
+        background: none;
+        border: none;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: underline;
+        padding: 6px;
+        box-shadow: none;
+      }
+
+      .footer {
+        text-align: center;
+        color: #3a6b53;
+        font-weight: 700;
+        font-size: 13px;
+        margin-top: 28px;
+        opacity: 0.85;
+      }
+      .footer .grass {
+        font-size: 20px;
+        letter-spacing: 2px;
+        display: block;
+        margin-bottom: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sky" aria-hidden="true">
+      <div class="sun-wrap">
+        <div class="sun-rays"></div>
+        <div class="sun"></div>
+      </div>
+
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="cloud c3"></div>
+      <div class="cloud c4"></div>
+
+      <div class="bird b1"></div>
+      <div class="bird b2"></div>
+      <div class="bird b3"></div>
+
+      <div class="fly" style="top: 38%; left: 10%; animation-delay: -3s">
+        <span>🦋</span>
+      </div>
+      <div
+        class="fly"
+        style="
+          top: 62%;
+          left: 70%;
+          font-size: 18px;
+          animation-delay: -11s;
+          animation-duration: 26s;
+        "
+      >
+        <span>🦋</span>
+      </div>
+
+      <div
+        class="seed"
+        style="left: 8%; animation-duration: 14s; animation-delay: -2s"
+      ></div>
+      <div
+        class="seed"
+        style="left: 20%; animation-duration: 18s; animation-delay: -9s"
+      ></div>
+      <div
+        class="seed"
+        style="left: 34%; animation-duration: 16s; animation-delay: -5s"
+      ></div>
+      <div
+        class="seed"
+        style="left: 48%; animation-duration: 20s; animation-delay: -12s"
+      ></div>
+      <div
+        class="seed"
+        style="left: 62%; animation-duration: 15s; animation-delay: -7s"
+      ></div>
+      <div
+        class="seed"
+        style="left: 76%; animation-duration: 19s; animation-delay: -3s"
+      ></div>
+      <div
+        class="seed"
+        style="left: 88%; animation-duration: 17s; animation-delay: -10s"
+      ></div>
     </div>
 
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
-    <div class="cloud c3"></div>
-    <div class="cloud c4"></div>
+    <div class="hills" aria-hidden="true">
+      <svg
+        viewBox="0 0 1440 220"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="hill-back"
+          fill="#bfeacb"
+          d="M0,150 C240,90 420,120 720,110 C1020,100 1200,140 1440,110 L1440,220 L0,220 Z"
+        />
+        <path
+          class="hill-mid"
+          fill="#7fd39a"
+          d="M0,175 C260,130 500,170 780,150 C1050,132 1240,175 1440,155 L1440,220 L0,220 Z"
+        />
+        <path
+          fill="#48b673"
+          d="M0,200 C300,175 560,205 860,190 C1120,178 1280,205 1440,192 L1440,220 L0,220 Z"
+        />
+      </svg>
+    </div>
 
-    <div class="bird b1"></div>
-    <div class="bird b2"></div>
-    <div class="bird b3"></div>
+    <div class="grass-field" id="grass" aria-hidden="true"></div>
 
-    <div class="fly" style="top:38%;left:10%;animation-delay:-3s"><span>🦋</span></div>
-    <div class="fly" style="top:62%;left:70%;font-size:18px;animation-delay:-11s;animation-duration:26s"><span>🦋</span></div>
+    <main class="wrap">
+      <header class="hero">
+        <div class="leaf">🌿🏕️☀️</div>
+        <h1>Төөгөөгийн зуслан руу аялцгаая!</h1>
+        <p class="sub">Зуны өдрийг хамтдаа хөгжилтэй өнгөрөөцгөөе! 🌻</p>
+      </header>
 
-    <div class="seed" style="left:8%;animation-duration:14s;animation-delay:-2s"></div>
-    <div class="seed" style="left:20%;animation-duration:18s;animation-delay:-9s"></div>
-    <div class="seed" style="left:34%;animation-duration:16s;animation-delay:-5s"></div>
-    <div class="seed" style="left:48%;animation-duration:20s;animation-delay:-12s"></div>
-    <div class="seed" style="left:62%;animation-duration:15s;animation-delay:-7s"></div>
-    <div class="seed" style="left:76%;animation-duration:19s;animation-delay:-3s"></div>
-    <div class="seed" style="left:88%;animation-duration:17s;animation-delay:-10s"></div>
-  </div>
+      <section class="card rsvp">
+        <h2>Хэн хэн явах вэ? 🎉</h2>
+        <p class="hint">
+          Нэрээ бичээд сонголтоо дараарай. Хүссэн үедээ өөрчилж болно.
+        </p>
+        <div class="field">
+          <input
+            id="name"
+            type="text"
+            maxlength="24"
+            autocomplete="name"
+            placeholder="Нэрээ энд бичнэ үү…"
+          />
+        </div>
+        <div class="btns">
+          <button class="btn-go" id="btn-go">✅ Явна</button>
+          <button class="btn-no" id="btn-no">❌ Явахгүй</button>
+        </div>
+        <div class="status" id="status"></div>
+        <div class="leave" id="leave-wrap" hidden>
+          <button id="btn-leave">Намайг жагсаалтаас хасах</button>
+        </div>
+      </section>
 
-  <div class="hills" aria-hidden="true">
-    <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="hill-back" fill="#bfeacb" d="M0,150 C240,90 420,120 720,110 C1020,100 1200,140 1440,110 L1440,220 L0,220 Z"/>
-      <path class="hill-mid" fill="#7fd39a" d="M0,175 C260,130 500,170 780,150 C1050,132 1240,175 1440,155 L1440,220 L0,220 Z"/>
-      <path fill="#48b673" d="M0,200 C300,175 560,205 860,190 C1120,178 1280,205 1440,192 L1440,220 L0,220 Z"/>
-    </svg>
-  </div>
-
-  <div class="grass-field" id="grass" aria-hidden="true"></div>
-
-  <main class="wrap">
-    <header class="hero">
-      <div class="leaf">🌿🏕️☀️</div>
-      <h1>Төөгөөгийн зуслан руу аялцгаая!</h1>
-      <p class="sub">Зуны өдрийг хамтдаа хөгжилтэй өнгөрөөцгөөе! 🌻</p>
-    </header>
-
-    <figure class="photo tall">
-      <span class="badge">📍 Очих газар</span>
-      <img src="img2.jpg" alt="Төөгөөгийн зуслан — ногоон тал, уулс, зуслангийн байшингууд" loading="lazy" />
-      <figcaption class="cap">Төөгөөгийн зуслан 🏕️ — ногоон тал, тэнгэрийн доор</figcaption>
-    </figure>
-
-    <section class="card rsvp">
-      <h2>Хэн хэн явах вэ? 🎉</h2>
-      <p class="hint">Нэрээ бичээд сонголтоо дараарай. Хүссэн үедээ өөрчилж болно.</p>
-      <div class="field">
-        <input id="name" type="text" maxlength="24" autocomplete="name" placeholder="Нэрээ энд бичнэ үү…" />
-      </div>
-      <div class="btns">
-        <button class="btn-go" id="btn-go">✅ Явна</button>
-        <button class="btn-no" id="btn-no">❌ Явахгүй</button>
-      </div>
-      <div class="status" id="status"></div>
-      <div class="leave" id="leave-wrap" hidden>
-        <button id="btn-leave">Намайг жагсаалтаас хасах</button>
-      </div>
-    </section>
-
-    <div class="top-grid">
       <section class="card info">
-        <div class="info-row"><span class="ico">📅</span><span class="lbl">Огноо:</span><span class="val" id="date-val">Дараа долоо хоногт</span></div>
-        <div class="info-row"><span class="ico">⏰</span><span class="lbl">Цаг:</span><span class="val" id="time-val">Өглөө 9 цаг</span></div>
-        <div class="info-row"><span class="ico">🌙</span><span class="lbl">Хугацаа:</span><span class="val">3 хоног</span></div>
-        <div class="info-row"><span class="ico">📍</span><span class="lbl">Байршил:</span><span class="val">Төөгөөгийн зуслан</span></div>
+        <div class="info-row">
+          <span class="ico">📅</span><span class="lbl">Огноо:</span
+          ><span class="val" id="date-val">Дараа долоо хоногт</span>
+        </div>
+        <div class="info-row">
+          <span class="ico">⏰</span><span class="lbl">Цаг:</span
+          ><span class="val" id="time-val">Өглөө 9 цаг</span>
+        </div>
+        <div class="info-row">
+          <span class="ico">🌙</span><span class="lbl">Хугацаа:</span
+          ><span class="val">3 хоног</span>
+        </div>
+        <div class="info-row">
+          <span class="ico">📍</span><span class="lbl">Байршил:</span
+          ><span class="val">Төөгөөгийн зуслан</span>
+        </div>
       </section>
 
       <div class="lists-grid">
-      <div class="list-col going">
-        <div class="list-photo">
-          <span class="badge">🎒 Явцгаая!</span>
-          <img src="img1.jpg" alt="Найзууд нар жаргах үед зуслан дээр сагс тоглож байгаа нь" loading="lazy" />
-        </div>
-        <section class="card">
-          <div class="list-head">
-            <span class="count-badge" id="going-count">0</span>
-            <h3>Явах хүмүүс</h3>
+        <div class="list-col going">
+          <div class="list-photo">
+            <span class="badge">🎒 Явцгаая!</span>
+            <img
+              src="img1.jpg"
+              alt="Найзууд нар жаргах үед зуслан дээр сагс тоглож байгаа нь"
+              loading="lazy"
+            />
           </div>
-          <ul class="people" id="going-list"></ul>
-          <div class="empty" id="going-empty">Одоохондоо хэн ч бүртгүүлээгүй байна. Эхнийх нь бол! 🚀</div>
-        </section>
-      </div>
-
-      <div class="list-col notgoing">
-        <div class="list-photo">
-          <span class="badge">💤 Дараагийнд</span>
-          <img src="img2.jpg" alt="Төөгөөгийн зуслан — ногоон тал, тэнгэрийн доор" loading="lazy" />
+          <section class="card">
+            <div class="list-head">
+              <span class="count-badge" id="going-count">0</span>
+              <h3>Явах хүмүүс</h3>
+            </div>
+            <ul class="people" id="going-list"></ul>
+            <div class="empty" id="going-empty">
+              Одоохондоо хэн ч бүртгүүлээгүй байна. Эхнийх нь бол! 🚀
+            </div>
+          </section>
         </div>
-        <section class="card">
-          <div class="list-head">
-            <span class="count-badge" id="no-count">0</span>
-            <h3>Явахгүй хүмүүс</h3>
+        <div class="list-col notgoing">
+          <div class="list-photo">
+            <span class="badge">💤 Дараагийнд</span>
+            <img
+              src="img2.jpg"
+              alt="Төөгөөгийн зуслан — ногоон тал, тэнгэрийн доор"
+              loading="lazy"
+            />
           </div>
-          <ul class="people" id="no-list"></ul>
-          <div class="empty" id="no-empty">—</div>
-        </section>
+          <section class="card">
+            <div class="list-head">
+              <span class="count-badge" id="no-count">0</span>
+              <h3>Явахгүй хүмүүс</h3>
+            </div>
+            <ul class="people" id="no-list"></ul>
+            <div class="empty" id="no-empty">—</div>
+          </section>
+        </div>
       </div>
+
+      <div class="footer">
+        <span class="grass">🌱🌿🌾🌻🌿🌱</span>
+        Найзуудтайгаа хамт • Зуслангийн аялал
       </div>
-    </div>
+    </main>
 
-    <div class="footer">
-      <span class="grass">🌱🌿🌾🌻🌿🌱</span>
-      Найзуудтайгаа хамт • Зуслангийн аялал
-    </div>
-  </main>
+    <script>
+      (function () {
+        "use strict";
+        var BLOB =
+          "https://jsonblob.com/api/jsonBlob/019f92cc-251f-77c7-b22d-d62506d2161b";
+        var POLL_MS = 5000;
+        var AV_COLORS = [
+          "#3ec46d",
+          "#2196f3",
+          "#f9b21a",
+          "#e26d5c",
+          "#8e5cff",
+          "#00b4a6",
+          "#ff7aa2",
+          "#ff9f1c",
+        ];
 
-<script>
-(function(){
-  "use strict";
-  var BLOB = "https://jsonblob.com/api/jsonBlob/019f92cc-251f-77c7-b22d-d62506d2161b";
-  var POLL_MS = 5000;
-  var AV_COLORS = ["#3ec46d","#2196f3","#f9b21a","#e26d5c","#8e5cff","#00b4a6","#ff7aa2","#ff9f1c"];
+        var $ = function (id) {
+          return document.getElementById(id);
+        };
+        var nameInput = $("name"),
+          btnGo = $("btn-go"),
+          btnNo = $("btn-no"),
+          btnLeave = $("btn-leave"),
+          leaveWrap = $("leave-wrap"),
+          statusEl = $("status");
 
-  var $ = function(id){ return document.getElementById(id); };
-  var nameInput = $("name"), btnGo = $("btn-go"), btnNo = $("btn-no"),
-      btnLeave = $("btn-leave"), leaveWrap = $("leave-wrap"), statusEl = $("status");
+        var state = { going: [], notGoing: [] };
+        var busy = false;
+        var pollTimer = null;
 
-  var state = { going:[], notGoing:[] };
-  var busy = false;
-  var pollTimer = null;
+        function norm(s) {
+          return (s || "").trim().replace(/\s+/g, " ");
+        }
+        function key(s) {
+          return norm(s).toLowerCase();
+        }
+        function myName() {
+          try {
+            return localStorage.getItem("zuslan_name") || "";
+          } catch (e) {
+            return "";
+          }
+        }
+        function setMyName(n) {
+          try {
+            localStorage.setItem("zuslan_name", n);
+          } catch (e) {}
+        }
 
-  function norm(s){ return (s||"").trim().replace(/\s+/g," "); }
-  function key(s){ return norm(s).toLowerCase(); }
-  function myName(){ try{ return localStorage.getItem("zuslan_name")||""; }catch(e){ return ""; } }
-  function setMyName(n){ try{ localStorage.setItem("zuslan_name", n); }catch(e){} }
+        function cp(s) {
+          return Array.from(s || "");
+        } // тэмдэгт бүрийг код цэгээр (emoji тасрахгүй)
+        function initials(n) {
+          var p = norm(n).split(" ").filter(Boolean);
+          if (p.length >= 2)
+            return ((cp(p[0])[0] || "") + (cp(p[1])[0] || "")).toUpperCase();
+          return cp(norm(n)).slice(0, 2).join("").toUpperCase();
+        }
+        function colorFor(n) {
+          var h = 0,
+            s = key(n);
+          for (var i = 0; i < s.length; i++) {
+            h = (h * 31 + s.charCodeAt(i)) >>> 0;
+          }
+          return AV_COLORS[h % AV_COLORS.length];
+        }
 
-  function cp(s){ return Array.from(s||""); } // тэмдэгт бүрийг код цэгээр (emoji тасрахгүй)
-  function initials(n){
-    var p = norm(n).split(" ").filter(Boolean);
-    if(p.length>=2) return ((cp(p[0])[0]||"") + (cp(p[1])[0]||"")).toUpperCase();
-    return cp(norm(n)).slice(0,2).join("").toUpperCase();
-  }
-  function colorFor(n){
-    var h=0, s=key(n);
-    for(var i=0;i<s.length;i++){ h=(h*31 + s.charCodeAt(i))>>>0; }
-    return AV_COLORS[h % AV_COLORS.length];
-  }
+        function sanitize(data) {
+          var out = { going: [], notGoing: [] };
+          function clean(arr) {
+            var seen = {},
+              res = [];
+            (arr || []).forEach(function (it) {
+              var n = typeof it === "string" ? it : it && it.name;
+              n = norm(n);
+              if (!n) return;
+              var k = key(n);
+              if (seen[k]) return;
+              seen[k] = 1;
+              res.push({ name: n, ts: (it && it.ts) || 0 });
+            });
+            return res;
+          }
+          out.going = clean(data && data.going);
+          out.notGoing = clean(data && data.notGoing);
+          // ensure a name isn't in both lists (going wins)
+          var g = {};
+          out.going.forEach(function (x) {
+            g[key(x.name)] = 1;
+          });
+          out.notGoing = out.notGoing.filter(function (x) {
+            return !g[key(x.name)];
+          });
+          return out;
+        }
 
-  function sanitize(data){
-    var out = { going:[], notGoing:[] };
-    function clean(arr){
-      var seen={}, res=[];
-      (arr||[]).forEach(function(it){
-        var n = typeof it==="string" ? it : (it && it.name);
-        n = norm(n); if(!n) return;
-        var k=key(n); if(seen[k]) return; seen[k]=1;
-        res.push({ name:n, ts:(it&&it.ts)||0 });
-      });
-      return res;
-    }
-    out.going = clean(data && data.going);
-    out.notGoing = clean(data && data.notGoing);
-    // ensure a name isn't in both lists (going wins)
-    var g={}; out.going.forEach(function(x){ g[key(x.name)]=1; });
-    out.notGoing = out.notGoing.filter(function(x){ return !g[key(x.name)]; });
-    return out;
-  }
+        function fetchState() {
+          return fetch(BLOB, {
+            headers: { Accept: "application/json" },
+            cache: "no-store",
+          })
+            .then(function (r) {
+              if (!r.ok) throw new Error("read " + r.status);
+              return r.json();
+            })
+            .then(function (d) {
+              return sanitize(d);
+            });
+        }
 
-  function fetchState(){
-    return fetch(BLOB, { headers:{ "Accept":"application/json" }, cache:"no-store" })
-      .then(function(r){ if(!r.ok) throw new Error("read "+r.status); return r.json(); })
-      .then(function(d){ return sanitize(d); });
-  }
+        function putState(next) {
+          return fetch(BLOB, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(next),
+          }).then(function (r) {
+            if (!r.ok) throw new Error("write " + r.status);
+            return next;
+          });
+        }
 
-  function putState(next){
-    return fetch(BLOB, {
-      method:"PUT",
-      headers:{ "Content-Type":"application/json", "Accept":"application/json" },
-      body: JSON.stringify(next)
-    }).then(function(r){ if(!r.ok) throw new Error("write "+r.status); return next; });
-  }
+        function render() {
+          var me = key(myName());
+          renderList(
+            "going-list",
+            "going-empty",
+            "going-count",
+            state.going,
+            me,
+            true,
+          );
+          renderList(
+            "no-list",
+            "no-empty",
+            "no-count",
+            state.notGoing,
+            me,
+            false,
+          );
+          // reflect current choice on buttons + leave option
+          var inGoing = state.going.some(function (x) {
+            return key(x.name) === me;
+          });
+          var inNo = state.notGoing.some(function (x) {
+            return key(x.name) === me;
+          });
+          btnGo.classList.toggle("active", inGoing);
+          btnNo.classList.toggle("active", inNo);
+          leaveWrap.hidden = !(me && (inGoing || inNo));
+        }
 
-  function render(){
-    var me = key(myName());
-    renderList("going-list","going-empty","going-count", state.going, me, true);
-    renderList("no-list","no-empty","no-count", state.notGoing, me, false);
-    // reflect current choice on buttons + leave option
-    var inGoing = state.going.some(function(x){ return key(x.name)===me; });
-    var inNo = state.notGoing.some(function(x){ return key(x.name)===me; });
-    btnGo.classList.toggle("active", inGoing);
-    btnNo.classList.toggle("active", inNo);
-    leaveWrap.hidden = !(me && (inGoing||inNo));
-  }
+        function renderList(listId, emptyId, countId, arr, me, isGoing) {
+          var ul = $(listId),
+            empty = $(emptyId),
+            cnt = $(countId);
+          cnt.textContent = arr.length;
+          ul.innerHTML = "";
+          if (arr.length === 0) {
+            empty.hidden = false;
+            empty.style.display = "";
+            return;
+          }
+          empty.hidden = true;
+          empty.style.display = "none";
+          var sorted = arr.slice().sort(function (a, b) {
+            return (a.ts || 0) - (b.ts || 0);
+          });
+          sorted.forEach(function (x) {
+            var li = document.createElement("li");
+            var av = document.createElement("span");
+            av.className = "avatar";
+            av.style.background = colorFor(x.name);
+            av.textContent = initials(x.name);
+            var nm = document.createElement("span");
+            nm.className = "name";
+            nm.textContent = x.name;
+            li.appendChild(av);
+            li.appendChild(nm);
+            if (isGoing) {
+              var em = document.createElement("span");
+              em.textContent = "🎒";
+              em.style.flex = "none";
+              li.appendChild(em);
+            }
+            if (me && key(x.name) === me) {
+              var tag = document.createElement("span");
+              tag.className = "me-tag";
+              tag.textContent = "Чи";
+              li.appendChild(tag);
+            }
+            ul.appendChild(li);
+          });
+        }
 
-  function renderList(listId, emptyId, countId, arr, me, isGoing){
-    var ul=$(listId), empty=$(emptyId), cnt=$(countId);
-    cnt.textContent = arr.length;
-    ul.innerHTML="";
-    if(arr.length===0){ empty.hidden=false; empty.style.display=""; return; }
-    empty.hidden=true; empty.style.display="none";
-    var sorted = arr.slice().sort(function(a,b){ return (a.ts||0)-(b.ts||0); });
-    sorted.forEach(function(x){
-      var li=document.createElement("li");
-      var av=document.createElement("span");
-      av.className="avatar"; av.style.background=colorFor(x.name); av.textContent=initials(x.name);
-      var nm=document.createElement("span"); nm.className="name"; nm.textContent=x.name;
-      li.appendChild(av); li.appendChild(nm);
-      if(isGoing){
-        var em=document.createElement("span"); em.textContent="🎒"; em.style.flex="none"; li.appendChild(em);
-      }
-      if(me && key(x.name)===me){
-        var tag=document.createElement("span"); tag.className="me-tag"; tag.textContent="Чи"; li.appendChild(tag);
-      }
-      ul.appendChild(li);
-    });
-  }
+        function setStatus(msg, kind) {
+          statusEl.textContent = msg || "";
+          statusEl.className = "status" + (kind ? " " + kind : "");
+        }
 
-  function setStatus(msg, kind){
-    statusEl.textContent = msg||"";
-    statusEl.className = "status" + (kind?(" "+kind):"");
-  }
+        function setBusy(b) {
+          busy = b;
+          btnGo.disabled = b;
+          btnNo.disabled = b;
+        }
 
-  function setBusy(b){
-    busy=b; btnGo.disabled=b; btnNo.disabled=b;
-  }
+        // choice: "going" | "notGoing" | "leave"
+        function commit(choice) {
+          if (busy) return;
+          var raw =
+            norm(nameInput.value) || (choice === "leave" ? myName() : "");
+          if (choice !== "leave" && !raw) {
+            setStatus("Эхлээд нэрээ бичээрэй 🙂", "err");
+            nameInput.focus();
+            return;
+          }
+          if (!raw) {
+            return;
+          }
+          setMyName(raw);
+          var k = key(raw);
+          setBusy(true);
+          setStatus("Хадгалж байна…", "");
+          // re-read latest to reduce lost updates, then apply, then write
+          fetchState()
+            .then(function (latest) {
+              function without(arr) {
+                return arr.filter(function (x) {
+                  return key(x.name) !== k;
+                });
+              }
+              var going = without(latest.going),
+                notGoing = without(latest.notGoing);
+              var now = Date.now();
+              if (choice === "going") going.push({ name: raw, ts: now });
+              else if (choice === "notGoing")
+                notGoing.push({ name: raw, ts: now });
+              var next = { going: going, notGoing: notGoing };
+              return putState(next).then(function () {
+                state = sanitize(next);
+              });
+            })
+            .then(function () {
+              render();
+              if (choice === "going")
+                setStatus("Бүртгэгдлээ! Уулзацгаая 🎉", "ok");
+              else if (choice === "notGoing")
+                setStatus("Ойлголоо, дараагийнд уулзъя 👋", "ok");
+              else setStatus("Жагсаалтаас хасагдлаа.", "ok");
+            })
+            .catch(function (err) {
+              setStatus(
+                "Алдаа гарлаа, дахин оролдоно уу. (" +
+                  ((err && err.message) || err) +
+                  ")",
+                "err",
+              );
+            })
+            .then(function () {
+              setBusy(false);
+            });
+        }
 
-  // choice: "going" | "notGoing" | "leave"
-  function commit(choice){
-    if(busy) return;
-    var raw = norm(nameInput.value) || (choice==="leave" ? myName() : "");
-    if(choice!=="leave" && !raw){
-      setStatus("Эхлээд нэрээ бичээрэй 🙂","err");
-      nameInput.focus();
-      return;
-    }
-    if(!raw){ return; }
-    setMyName(raw);
-    var k = key(raw);
-    setBusy(true);
-    setStatus("Хадгалж байна…","");
-    // re-read latest to reduce lost updates, then apply, then write
-    fetchState().then(function(latest){
-      function without(arr){ return arr.filter(function(x){ return key(x.name)!==k; }); }
-      var going = without(latest.going), notGoing = without(latest.notGoing);
-      var now = Date.now();
-      if(choice==="going") going.push({ name:raw, ts:now });
-      else if(choice==="notGoing") notGoing.push({ name:raw, ts:now });
-      var next = { going:going, notGoing:notGoing };
-      return putState(next).then(function(){ state = sanitize(next); });
-    }).then(function(){
-      render();
-      if(choice==="going") setStatus("Бүртгэгдлээ! Уулзацгаая 🎉","ok");
-      else if(choice==="notGoing") setStatus("Ойлголоо, дараагийнд уулзъя 👋","ok");
-      else setStatus("Жагсаалтаас хасагдлаа.","ok");
-    }).catch(function(err){
-      setStatus("Алдаа гарлаа, дахин оролдоно уу. (" + (err&&err.message||err) + ")","err");
-    }).then(function(){ setBusy(false); });
-  }
+        function poll() {
+          fetchState()
+            .then(function (d) {
+              state = d;
+              render();
+            })
+            .catch(function () {});
+        }
 
-  function poll(){
-    fetchState().then(function(d){ state=d; render(); }).catch(function(){});
-  }
+        btnGo.addEventListener("click", function () {
+          commit("going");
+        });
+        btnNo.addEventListener("click", function () {
+          commit("notGoing");
+        });
+        btnLeave.addEventListener("click", function () {
+          commit("leave");
+        });
+        nameInput.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            commit("going");
+          }
+        });
 
-  btnGo.addEventListener("click", function(){ commit("going"); });
-  btnNo.addEventListener("click", function(){ commit("notGoing"); });
-  btnLeave.addEventListener("click", function(){ commit("leave"); });
-  nameInput.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); commit("going"); } });
+        // init
+        nameInput.value = myName();
+        poll();
+        pollTimer = setInterval(poll, POLL_MS);
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "visible") poll();
+        });
+      })();
 
-  // init
-  nameInput.value = myName();
-  poll();
-  pollTimer = setInterval(poll, POLL_MS);
-  document.addEventListener("visibilitychange", function(){
-    if(document.visibilityState==="visible") poll();
-  });
-})();
+      /* Grow a field of grass blades that sway in the wind */
+      (function () {
+        "use strict";
 
-/* Grow a field of grass blades that sway in the wind */
-(function(){
-  "use strict";
-  var field = document.getElementById("grass");
-  if(!field) return;
-  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var GREENS = ["#3aa863","#48b673","#2f9d5b","#57c07f","#39a15c","#6bd08e"];
-  var seed = 2166136261;
-  function rnd(){ // deterministic pseudo-random, no Date/Math.random reliance for base look
-    seed ^= seed<<13; seed ^= seed>>>17; seed ^= seed<<5; seed>>>=0;
-    return seed/4294967296;
-  }
-  function build(){
-    field.innerHTML = "";
-    var w = field.clientWidth || window.innerWidth;
-    var gap = 8, n = Math.ceil(w/gap) + 2;
-    for(var i=0;i<n;i++){
-      var b = document.createElement("span");
-      b.className = "blade";
-      var x = i*gap + (rnd()*4 - 2);
-      var h = 20 + rnd()*40;            // blade height
-      var bw = 5 + rnd()*4;             // blade width
-      var base = (rnd()*10 - 5);        // resting tilt
-      var amp = 7 + rnd()*9;            // how far it bends in the wind
-      var g1 = GREENS[i % GREENS.length];
-      var g2 = GREENS[(i+3) % GREENS.length];
-      b.style.left = x.toFixed(1)+"px";
-      b.style.width = bw.toFixed(1)+"px";
-      b.style.height = h.toFixed(1)+"px";
-      b.style.background = "linear-gradient(to top,"+g2+","+g1+")";
-      b.style.setProperty("--base", base.toFixed(1)+"deg");
-      b.style.setProperty("--amp", amp.toFixed(1)+"deg");
-      b.style.zIndex = Math.round(h);
-      if(reduce){
-        b.style.transform = "rotate("+base.toFixed(1)+"deg)";
-      }else{
-        var dur = (2.1 + rnd()*1.8).toFixed(2);
-        // negative delay tied to x makes a gust travel across the field
-        var delay = (-(x/150) - rnd()*0.8).toFixed(2);
-        b.style.animationDuration = dur+"s";
-        b.style.animationDelay = delay+"s";
-      }
-      field.appendChild(b);
-    }
-  }
-  build();
-  var t;
-  window.addEventListener("resize", function(){ clearTimeout(t); t=setTimeout(build,200); });
-})();
-</script>
-</body>
+        /* ─────────────────────────────────────────────────────────────
+     ӨВСНИЙ ТОХИРГОО — эдгээр тоог л өөрчилж тааруулаарай
+     ───────────────────────────────────────────────────────────── */
+        var CFG = {
+          minHeight: 20, // хамгийн намхан өвс (px) — өндөр болгоё гэвэл ихэсгэ
+          maxHeight: 60, // хамгийн өндөр өвс (px)
+          density: 8, // ишний хоорондын зай (px). БАГА = илүү НЯГТ өвс
+          minWidth: 5, // ишний нарийн зузаан (px)
+          maxWidth: 9, // ишний бүдүүн зузаан (px)
+          windMin: 7, // салхины хамгийн зөөлөн бөхийлт (градус)
+          windMax: 16, // салхины хамгийн хүчтэй бөхийлт (градус). ИХЭСГЭ = хүчтэй салхи
+          windSpeed: 3.0, // салхины хурд: БАГА = хурдан/ширүүн, ИХ = удаан/тайван
+          tilt: 5, // ишний унтрах налуу (0 = цэх, их = хазайсан)
+        };
+        /* ───────────────────────────────────────────────────────────── */
+
+        var field = document.getElementById("grass");
+        if (!field) return;
+        var reduce =
+          window.matchMedia &&
+          matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var GREENS = [
+          "#3aa863",
+          "#48b673",
+          "#2f9d5b",
+          "#57c07f",
+          "#39a15c",
+          "#6bd08e",
+        ];
+        var seed = 2166136261;
+        function rnd() {
+          // deterministic pseudo-random, no Date/Math.random reliance for base look
+          seed ^= seed << 13;
+          seed ^= seed >>> 17;
+          seed ^= seed << 5;
+          seed >>>= 0;
+          return seed / 4294967296;
+        }
+        function build() {
+          seed = 2166136261;
+          field.innerHTML = "";
+          // талбайн өндрийг өвсний өндөрт тааруулна (өндөр өвс тайрагдахгүй)
+          field.style.height = Math.ceil(CFG.maxHeight + 10) + "px";
+          var w = field.clientWidth || window.innerWidth;
+          var gap = CFG.density,
+            n = Math.ceil(w / gap) + 2;
+          var hRange = CFG.maxHeight - CFG.minHeight;
+          var wRange = CFG.maxWidth - CFG.minWidth;
+          var windRange = CFG.windMax - CFG.windMin;
+          for (var i = 0; i < n; i++) {
+            var b = document.createElement("span");
+            b.className = "blade";
+            var x = i * gap + (rnd() * 4 - 2);
+            var h = CFG.minHeight + rnd() * hRange; // blade height
+            var bw = CFG.minWidth + rnd() * wRange; // blade width
+            var base = (rnd() * 2 - 1) * CFG.tilt; // resting tilt
+            var amp = CFG.windMin + rnd() * windRange; // how far it bends in the wind
+            var g1 = GREENS[i % GREENS.length];
+            var g2 = GREENS[(i + 3) % GREENS.length];
+            b.style.left = x.toFixed(1) + "px";
+            b.style.width = bw.toFixed(1) + "px";
+            b.style.height = h.toFixed(1) + "px";
+            b.style.background =
+              "linear-gradient(to top," + g2 + "," + g1 + ")";
+            b.style.setProperty("--base", base.toFixed(1) + "deg");
+            b.style.setProperty("--amp", amp.toFixed(1) + "deg");
+            b.style.zIndex = Math.round(h);
+            if (reduce) {
+              b.style.transform = "rotate(" + base.toFixed(1) + "deg)";
+            } else {
+              var dur = (
+                CFG.windSpeed * 0.7 +
+                rnd() * CFG.windSpeed * 0.6
+              ).toFixed(2);
+              // negative delay tied to x makes a gust travel across the field
+              var delay = (-(x / 150) - rnd() * 0.8).toFixed(2);
+              b.style.animationDuration = dur + "s";
+              b.style.animationDelay = delay + "s";
+            }
+            field.appendChild(b);
+          }
+        }
+        build();
+        var t;
+        window.addEventListener("resize", function () {
+          clearTimeout(t);
+          t = setTimeout(build, 200);
+        });
+      })();
+    </script>
+  </body>
 </html>
