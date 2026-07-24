@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🌿 Төөгөөгийн зуслан ☀️</title>
+<meta name="description" content="Төөгөөгийн зуслан руу хэн явахаа бүртгээрэй!" />
+<meta property="og:title" content="🌿 Төөгөөгийн зуслан руу аялцгаая! ☀️" />
+<meta property="og:description" content="Явах бол нэрээ бүртгэ. Хэн хэн явахыг эндээс хараарай!" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
+<style>
+  :root{
+    --sky:#4db8ff; --sky-deep:#2196f3; --sky-soft:#bfe6ff;
+    --green:#3ec46d; --green-deep:#22a04f;
+    --yellow:#ffd23f; --yellow-deep:#f9b21a;
+    --ink:#173a4a; --muted:#5b7c8a; --white:#ffffff;
+    --shadow:0 14px 40px rgba(23,58,74,.16);
+    --radius:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:linear-gradient(180deg,#7fd0ff 0%,#a8e0ff 40%,#d8f3e0 100%);
+    min-height:100vh;
+    -webkit-tap-highlight-color:transparent;
+    overflow-x:hidden;
+  }
+  /* Sky decoration */
+  .sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .sun{position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;
+    background:radial-gradient(circle at 50% 50%,#fff2a8 0%,var(--yellow) 55%,var(--yellow-deep) 100%);
+    box-shadow:0 0 80px 20px rgba(255,210,63,.55);animation:pulse 5s ease-in-out infinite}
+  @keyframes pulse{50%{transform:scale(1.06)}}
+  .cloud{position:absolute;background:rgba(255,255,255,.85);border-radius:50px;filter:blur(.3px)}
+  .cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
+  .c1{width:120px;height:34px;top:120px;left:-20px;animation:drift 40s linear infinite}
+  .c1::before{width:52px;height:52px;top:-24px;left:20px}
+  .c1::after{width:38px;height:38px;top:-16px;left:64px}
+  .c2{width:90px;height:26px;top:230px;right:10px;opacity:.8;animation:drift2 55s linear infinite}
+  .c2::before{width:40px;height:40px;top:-18px;left:14px}
+  .c2::after{width:30px;height:30px;top:-12px;left:48px}
+  @keyframes drift{0%{transform:translateX(-30px)}50%{transform:translateX(40px)}100%{transform:translateX(-30px)}}
+  @keyframes drift2{0%{transform:translateX(20px)}50%{transform:translateX(-40px)}100%{transform:translateX(20px)}}
+
+  .wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:22px 16px 60px}
+
+  /* Hero */
+  .hero{text-align:center;padding:26px 14px 20px}
+  .hero .leaf{font-size:30px}
+  .hero h1{
+    font-family:'Baloo 2',sans-serif;font-weight:800;line-height:1.05;
+    font-size:clamp(30px,8.5vw,46px);color:var(--white);
+    text-shadow:0 3px 0 rgba(34,160,79,.35),0 10px 24px rgba(23,58,74,.28);
+    margin:6px 0 10px;letter-spacing:.5px}
+  .hero p.sub{font-weight:700;font-size:clamp(15px,4.2vw,19px);color:#0d5a34;
+    background:rgba(255,255,255,.55);display:inline-block;padding:7px 16px;border-radius:999px}
+
+  /* Card */
+  .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:22px 20px;margin-top:20px}
+  .card.info{background:linear-gradient(135deg,#ffffff 0%,#f2fbff 100%)}
+
+  .info-row{display:flex;align-items:center;gap:12px;padding:11px 0;font-size:16px;font-weight:600}
+  .info-row+.info-row{border-top:1px dashed #dfeef4}
+  .info-row .ico{font-size:22px;flex:none;width:30px;text-align:center}
+  .info-row .lbl{color:var(--muted);font-weight:700;flex:none}
+  .info-row .val{color:var(--ink);font-weight:800}
+  .info-row .val.tbd{color:#a7b9c2;font-style:italic;font-weight:700}
+
+  /* RSVP */
+  .rsvp h2{font-family:'Baloo 2',sans-serif;font-size:22px;color:var(--ink);margin-bottom:4px}
+  .rsvp .hint{color:var(--muted);font-weight:600;font-size:14px;margin-bottom:16px}
+  .field{position:relative;margin-bottom:14px}
+  .field input{width:100%;padding:15px 16px;font-size:17px;font-weight:700;font-family:inherit;
+    border:2px solid #d7ebf3;border-radius:16px;color:var(--ink);background:#f7fcff;outline:none;
+    transition:border-color .15s,box-shadow .15s}
+  .field input::placeholder{color:#a7c2ce;font-weight:600}
+  .field input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(77,184,255,.18);background:#fff}
+
+  .btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  button{font-family:inherit;font-weight:800;cursor:pointer;border:none;border-radius:16px;
+    font-size:17px;padding:15px 10px;transition:transform .12s,box-shadow .12s,filter .12s;
+    -webkit-user-select:none;user-select:none}
+  button:active{transform:translateY(2px) scale(.99)}
+  .btn-go{background:linear-gradient(135deg,var(--green) 0%,var(--green-deep) 100%);color:#fff;
+    box-shadow:0 8px 18px rgba(34,160,79,.35)}
+  .btn-no{background:#fff;color:#e26d5c;border:2px solid #ffd9d2;box-shadow:0 6px 14px rgba(226,109,92,.12)}
+  button:disabled{filter:grayscale(.4) opacity(.6);cursor:wait}
+  .btn-go.active{outline:4px solid rgba(34,160,79,.25)}
+  .btn-no.active{outline:4px solid rgba(226,109,92,.22)}
+
+  .status{text-align:center;font-weight:700;font-size:14px;min-height:20px;margin-top:12px}
+  .status.ok{color:var(--green-deep)}
+  .status.err{color:#e26d5c}
+
+  /* Lists */
+  .count-badge{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;
+    padding:0 9px;border-radius:999px;font-family:'Baloo 2',sans-serif;font-size:16px;font-weight:800;color:#fff}
+  .going .count-badge{background:linear-gradient(135deg,var(--green),var(--green-deep))}
+  .notgoing .count-badge{background:#c7d6dd}
+  .list-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .list-head h3{font-family:'Baloo 2',sans-serif;font-size:20px}
+  ul.people{list-style:none;display:flex;flex-direction:column;gap:9px}
+  ul.people li{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;
+    font-weight:700;font-size:16px;animation:pop .25s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .going ul.people li{background:linear-gradient(135deg,#eafaf0,#dff5e7)}
+  .notgoing ul.people li{background:#f3f7f9;color:var(--muted)}
+  .avatar{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    font-family:'Baloo 2',sans-serif;font-weight:800;color:#fff;font-size:16px}
+  li .name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  li .me-tag{flex:none;font-size:11px;font-weight:800;color:var(--green-deep);
+    background:#d3f3de;padding:3px 8px;border-radius:999px}
+  .empty{color:#a7b9c2;font-weight:700;text-align:center;padding:14px 0}
+
+  .leave{display:block;text-align:center;margin-top:16px}
+  .leave button{background:none;border:none;color:var(--muted);font-size:13px;font-weight:700;
+    text-decoration:underline;padding:6px;box-shadow:none}
+
+  .footer{text-align:center;color:#3a6b53;font-weight:700;font-size:13px;margin-top:28px;opacity:.85}
+  .footer .grass{font-size:20px;letter-spacing:2px;display:block;margin-bottom:6px}
+</style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <div class="leaf">🌿🏕️☀️</div>
+      <h1>Төөгөөгийн зуслан руу аялцгаая!</h1>
+      <p class="sub">Зуны өдрийг хамтдаа хөгжилтэй өнгөрөөцгөөе! 🌻</p>
+    </header>
+
+    <section class="card info">
+      <div class="info-row"><span class="ico">📅</span><span class="lbl">Огноо:</span><span class="val tbd" id="date-val">дараа нь бөглөнө</span></div>
+      <div class="info-row"><span class="ico">⏰</span><span class="lbl">Цаг:</span><span class="val tbd" id="time-val">дараа нь бөглөнө</span></div>
+      <div class="info-row"><span class="ico">📍</span><span class="lbl">Байршил:</span><span class="val">Төөгөөгийн зуслан</span></div>
+    </section>
+
+    <section class="card rsvp">
+      <h2>Хэн хэн явах вэ? 🎉</h2>
+      <p class="hint">Нэрээ бичээд сонголтоо дараарай. Хүссэн үедээ өөрчилж болно.</p>
+      <div class="field">
+        <input id="name" type="text" maxlength="24" autocomplete="name" placeholder="Нэрээ энд бичнэ үү…" />
+      </div>
+      <div class="btns">
+        <button class="btn-go" id="btn-go">✅ Явна</button>
+        <button class="btn-no" id="btn-no">❌ Явахгүй</button>
+      </div>
+      <div class="status" id="status"></div>
+      <div class="leave" id="leave-wrap" hidden>
+        <button id="btn-leave">Намайг жагсаалтаас хасах</button>
+      </div>
+    </section>
+
+    <section class="card going">
+      <div class="list-head">
+        <span class="count-badge" id="going-count">0</span>
+        <h3>Явах хүмүүс</h3>
+      </div>
+      <ul class="people" id="going-list"></ul>
+      <div class="empty" id="going-empty">Одоохондоо хэн ч бүртгүүлээгүй байна. Эхнийх нь бол! 🚀</div>
+    </section>
+
+    <section class="card notgoing">
+      <div class="list-head">
+        <span class="count-badge" id="no-count">0</span>
+        <h3>Явахгүй хүмүүс</h3>
+      </div>
+      <ul class="people" id="no-list"></ul>
+      <div class="empty" id="no-empty">—</div>
+    </section>
+
+    <div class="footer">
+      <span class="grass">🌱🌿🌾🌻🌿🌱</span>
+      Найзуудтайгаа хамт • Зуслангийн аялал
+    </div>
+  </main>
+
+<script>
+(function(){
+  "use strict";
+  var BLOB = "https://jsonblob.com/api/jsonBlob/019f92cc-251f-77c7-b22d-d62506d2161b";
+  var POLL_MS = 5000;
+  var AV_COLORS = ["#3ec46d","#2196f3","#f9b21a","#e26d5c","#8e5cff","#00b4a6","#ff7aa2","#ff9f1c"];
+
+  var $ = function(id){ return document.getElementById(id); };
+  var nameInput = $("name"), btnGo = $("btn-go"), btnNo = $("btn-no"),
+      btnLeave = $("btn-leave"), leaveWrap = $("leave-wrap"), statusEl = $("status");
+
+  var state = { going:[], notGoing:[] };
+  var busy = false;
+  var pollTimer = null;
+
+  function norm(s){ return (s||"").trim().replace(/\s+/g," "); }
+  function key(s){ return norm(s).toLowerCase(); }
+  function myName(){ try{ return localStorage.getItem("zuslan_name")||""; }catch(e){ return ""; } }
+  function setMyName(n){ try{ localStorage.setItem("zuslan_name", n); }catch(e){} }
+
+  function initials(n){
+    var p = norm(n).split(" ");
+    if(p.length>=2) return (p[0][0]+p[1][0]).toUpperCase();
+    return norm(n).slice(0,2).toUpperCase();
+  }
+  function colorFor(n){
+    var h=0, s=key(n);
+    for(var i=0;i<s.length;i++){ h=(h*31 + s.charCodeAt(i))>>>0; }
+    return AV_COLORS[h % AV_COLORS.length];
+  }
+
+  function sanitize(data){
+    var out = { going:[], notGoing:[] };
+    function clean(arr){
+      var seen={}, res=[];
+      (arr||[]).forEach(function(it){
+        var n = typeof it==="string" ? it : (it && it.name);
+        n = norm(n); if(!n) return;
+        var k=key(n); if(seen[k]) return; seen[k]=1;
+        res.push({ name:n, ts:(it&&it.ts)||0 });
+      });
+      return res;
+    }
+    out.going = clean(data && data.going);
+    out.notGoing = clean(data && data.notGoing);
+    // ensure a name isn't in both lists (going wins)
+    var g={}; out.going.forEach(function(x){ g[key(x.name)]=1; });
+    out.notGoing = out.notGoing.filter(function(x){ return !g[key(x.name)]; });
+    return out;
+  }
+
+  function fetchState(){
+    return fetch(BLOB, { headers:{ "Accept":"application/json" }, cache:"no-store" })
+      .then(function(r){ if(!r.ok) throw new Error("read "+r.status); return r.json(); })
+      .then(function(d){ return sanitize(d); });
+  }
+
+  function putState(next){
+    return fetch(BLOB, {
+      method:"PUT",
+      headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+      body: JSON.stringify(next)
+    }).then(function(r){ if(!r.ok) throw new Error("write "+r.status); return next; });
+  }
+
+  function render(){
+    var me = key(myName());
+    renderList("going-list","going-empty","going-count", state.going, me, true);
+    renderList("no-list","no-empty","no-count", state.notGoing, me, false);
+    // reflect current choice on buttons + leave option
+    var inGoing = state.going.some(function(x){ return key(x.name)===me; });
+    var inNo = state.notGoing.some(function(x){ return key(x.name)===me; });
+    btnGo.classList.toggle("active", inGoing);
+    btnNo.classList.toggle("active", inNo);
+    leaveWrap.hidden = !(me && (inGoing||inNo));
+  }
+
+  function renderList(listId, emptyId, countId, arr, me, isGoing){
+    var ul=$(listId), empty=$(emptyId), cnt=$(countId);
+    cnt.textContent = arr.length;
+    ul.innerHTML="";
+    if(arr.length===0){ empty.hidden=false; empty.style.display=""; return; }
+    empty.hidden=true; empty.style.display="none";
+    var sorted = arr.slice().sort(function(a,b){ return (a.ts||0)-(b.ts||0); });
+    sorted.forEach(function(x){
+      var li=document.createElement("li");
+      var av=document.createElement("span");
+      av.className="avatar"; av.style.background=colorFor(x.name); av.textContent=initials(x.name);
+      var nm=document.createElement("span"); nm.className="name"; nm.textContent=x.name;
+      li.appendChild(av); li.appendChild(nm);
+      if(isGoing){
+        var em=document.createElement("span"); em.textContent="🎒"; em.style.flex="none"; li.appendChild(em);
+      }
+      if(me && key(x.name)===me){
+        var tag=document.createElement("span"); tag.className="me-tag"; tag.textContent="Чи"; li.appendChild(tag);
+      }
+      ul.appendChild(li);
+    });
+  }
+
+  function setStatus(msg, kind){
+    statusEl.textContent = msg||"";
+    statusEl.className = "status" + (kind?(" "+kind):"");
+  }
+
+  function setBusy(b){
+    busy=b; btnGo.disabled=b; btnNo.disabled=b;
+  }
+
+  // choice: "going" | "notGoing" | "leave"
+  function commit(choice){
+    if(busy) return;
+    var raw = norm(nameInput.value) || (choice==="leave" ? myName() : "");
+    if(choice!=="leave" && !raw){
+      setStatus("Эхлээд нэрээ бичээрэй 🙂","err");
+      nameInput.focus();
+      return;
+    }
+    if(!raw){ return; }
+    setMyName(raw);
+    var k = key(raw);
+    setBusy(true);
+    setStatus("Хадгалж байна…","");
+    // re-read latest to reduce lost updates, then apply, then write
+    fetchState().then(function(latest){
+      function without(arr){ return arr.filter(function(x){ return key(x.name)!==k; }); }
+      var going = without(latest.going), notGoing = without(latest.notGoing);
+      var now = Date.now();
+      if(choice==="going") going.push({ name:raw, ts:now });
+      else if(choice==="notGoing") notGoing.push({ name:raw, ts:now });
+      var next = { going:going, notGoing:notGoing };
+      return putState(next).then(function(){ state = sanitize(next); });
+    }).then(function(){
+      render();
+      if(choice==="going") setStatus("Бүртгэгдлээ! Уулзацгаая 🎉","ok");
+      else if(choice==="notGoing") setStatus("Ойлголоо, дараагийнд уулзъя 👋","ok");
+      else setStatus("Жагсаалтаас хасагдлаа.","ok");
+    }).catch(function(err){
+      setStatus("Алдаа гарлаа, дахин оролдоно уу. (" + (err&&err.message||err) + ")","err");
+    }).then(function(){ setBusy(false); });
+  }
+
+  function poll(){
+    fetchState().then(function(d){ state=d; render(); }).catch(function(){});
+  }
+
+  btnGo.addEventListener("click", function(){ commit("going"); });
+  btnNo.addEventListener("click", function(){ commit("notGoing"); });
+  btnLeave.addEventListener("click", function(){ commit("leave"); });
+  nameInput.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); commit("going"); } });
+
+  // init
+  nameInput.value = myName();
+  poll();
+  pollTimer = setInterval(poll, POLL_MS);
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState==="visible") poll();
+  });
+})();
+</script>
+</body>
+</html>
