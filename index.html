@@ -27,29 +27,127 @@
   body{
     font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
     color:var(--ink);
-    background:linear-gradient(180deg,#7fd0ff 0%,#a8e0ff 40%,#d8f3e0 100%);
+    background:
+      radial-gradient(120% 80% at 82% -10%,rgba(255,241,176,.55) 0%,rgba(255,241,176,0) 42%),
+      linear-gradient(180deg,#5fb8f7 0%,#7fd0ff 26%,#a8e0ff 50%,#cdefe0 74%,#e2f7e8 100%);
+    background-size:auto, 100% 220%;
+    background-position:center, center 0%;
     background-attachment:fixed;
     background-repeat:no-repeat;
+    animation:skyShift 26s ease-in-out infinite;
     min-height:100vh;
     -webkit-tap-highlight-color:transparent;
     overflow-x:hidden;
   }
+  @keyframes skyShift{50%{background-position:center, center 100%}}
+
   /* Sky decoration */
   .sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .sun{position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;
-    background:radial-gradient(circle at 50% 50%,#fff2a8 0%,var(--yellow) 55%,var(--yellow-deep) 100%);
-    box-shadow:0 0 80px 20px rgba(255,210,63,.55);animation:pulse 5s ease-in-out infinite}
-  @keyframes pulse{50%{transform:scale(1.06)}}
-  .cloud{position:absolute;background:rgba(255,255,255,.85);border-radius:50px;filter:blur(.3px)}
+
+  /* Sun with rotating rays */
+  .sun-wrap{position:absolute;top:-60px;right:-60px;width:220px;height:220px}
+  .sun-rays{position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 0deg,
+      rgba(255,225,120,.0) 0deg,rgba(255,225,120,.45) 8deg,rgba(255,225,120,0) 22deg,
+      rgba(255,225,120,0) 30deg,rgba(255,225,120,.45) 38deg,rgba(255,225,120,0) 52deg,
+      rgba(255,225,120,0) 60deg,rgba(255,225,120,.45) 68deg,rgba(255,225,120,0) 82deg,
+      rgba(255,225,120,0) 90deg,rgba(255,225,120,.45) 98deg,rgba(255,225,120,0) 112deg,
+      rgba(255,225,120,0) 120deg,rgba(255,225,120,.45) 128deg,rgba(255,225,120,0) 142deg,
+      rgba(255,225,120,0) 150deg,rgba(255,225,120,.45) 158deg,rgba(255,225,120,0) 172deg,
+      rgba(255,225,120,0) 180deg,rgba(255,225,120,.45) 188deg,rgba(255,225,120,0) 202deg,
+      rgba(255,225,120,0) 210deg,rgba(255,225,120,.45) 218deg,rgba(255,225,120,0) 232deg,
+      rgba(255,225,120,0) 240deg,rgba(255,225,120,.45) 248deg,rgba(255,225,120,0) 262deg,
+      rgba(255,225,120,0) 270deg,rgba(255,225,120,.45) 278deg,rgba(255,225,120,0) 292deg,
+      rgba(255,225,120,0) 300deg,rgba(255,225,120,.45) 308deg,rgba(255,225,120,0) 322deg,
+      rgba(255,225,120,0) 330deg,rgba(255,225,120,.45) 338deg,rgba(255,225,120,0) 352deg,
+      rgba(255,225,120,0) 360deg);
+    -webkit-mask:radial-gradient(circle,transparent 46%,#000 50%,transparent 82%);
+    mask:radial-gradient(circle,transparent 46%,#000 50%,transparent 82%);
+    animation:spin 90s linear infinite;opacity:.85}
+  .sun{position:absolute;top:50%;left:50%;width:150px;height:150px;margin:-75px 0 0 -75px;
+    border-radius:50%;
+    background:radial-gradient(circle at 42% 40%,#fffbe0 0%,#fff2a8 40%,var(--yellow) 68%,var(--yellow-deep) 100%);
+    box-shadow:0 0 70px 22px rgba(255,210,63,.5),0 0 130px 50px rgba(255,210,63,.25);
+    animation:pulse 5s ease-in-out infinite}
+  @keyframes pulse{50%{transform:scale(1.05)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* Clouds */
+  .cloud{position:absolute;background:rgba(255,255,255,.9);border-radius:50px;
+    filter:blur(.3px) drop-shadow(0 8px 12px rgba(80,140,180,.18))}
   .cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
-  .c1{width:120px;height:34px;top:120px;left:-20px;animation:drift 40s linear infinite}
+  .c1{width:120px;height:34px;top:90px;animation:float-l 46s linear infinite}
   .c1::before{width:52px;height:52px;top:-24px;left:20px}
   .c1::after{width:38px;height:38px;top:-16px;left:64px}
-  .c2{width:90px;height:26px;top:230px;right:10px;opacity:.8;animation:drift2 55s linear infinite}
+  .c2{width:90px;height:26px;top:200px;opacity:.85;transform:scale(.9);animation:float-r 62s linear infinite}
   .c2::before{width:40px;height:40px;top:-18px;left:14px}
   .c2::after{width:30px;height:30px;top:-12px;left:48px}
-  @keyframes drift{0%{transform:translateX(-30px)}50%{transform:translateX(40px)}100%{transform:translateX(-30px)}}
-  @keyframes drift2{0%{transform:translateX(20px)}50%{transform:translateX(-40px)}100%{transform:translateX(20px)}}
+  .c3{width:150px;height:40px;top:340px;opacity:.7;animation:float-l 78s linear infinite;animation-delay:-20s}
+  .c3::before{width:64px;height:64px;top:-30px;left:26px}
+  .c3::after{width:46px;height:46px;top:-20px;left:80px}
+  .c4{width:70px;height:20px;top:150px;opacity:.6;transform:scale(.85);animation:float-r 90s linear infinite;animation-delay:-40s}
+  .c4::before{width:32px;height:32px;top:-14px;left:12px}
+  .c4::after{width:24px;height:24px;top:-9px;left:38px}
+  @keyframes float-l{
+    0%{transform:translateX(-140px)}
+    100%{transform:translateX(calc(100vw + 60px))}}
+  @keyframes float-r{
+    0%{transform:translateX(calc(100vw + 60px))}
+    100%{transform:translateX(-160px)}}
+
+  /* Birds */
+  .bird{position:absolute;width:20px;height:20px;color:rgba(35,70,95,.55);
+    animation:fly 24s linear infinite}
+  .bird::before,.bird::after{content:"";position:absolute;top:6px;width:11px;height:11px;
+    border-top:2.5px solid currentColor;border-radius:50%}
+  .bird::before{left:0;border-right:2.5px solid transparent;transform-origin:right center;
+    animation:flap 1.1s ease-in-out infinite}
+  .bird::after{right:0;border-left:2.5px solid transparent;transform-origin:left center;
+    animation:flap 1.1s ease-in-out infinite}
+  .b1{top:130px;transform:scale(1);animation-delay:0s}
+  .b2{top:170px;transform:scale(.7);animation-delay:-6s;opacity:.8}
+  .b3{top:110px;transform:scale(.85);animation-delay:-14s;opacity:.7}
+  @keyframes flap{50%{transform:rotate(24deg)}}
+  @keyframes fly{
+    0%{transform:translate(-40px,0)}
+    100%{transform:translate(calc(100vw + 40px),40px)}}
+
+  /* Floating dandelion / pollen particles */
+  .seed{position:absolute;bottom:-20px;width:8px;height:8px;border-radius:50%;
+    background:radial-gradient(circle at 40% 40%,#fff,#eafff2);
+    box-shadow:0 0 6px 2px rgba(255,255,255,.6);opacity:0;
+    animation:rise linear infinite}
+  @keyframes rise{
+    0%{opacity:0;transform:translate(0,0) scale(.6)}
+    10%{opacity:.9}
+    50%{transform:translate(28px,-46vh) scale(1)}
+    90%{opacity:.7}
+    100%{opacity:0;transform:translate(-14px,-96vh) scale(.7)}}
+
+  /* Butterflies */
+  .fly{position:absolute;font-size:22px;filter:drop-shadow(0 3px 5px rgba(0,0,0,.12));
+    animation:wander 20s ease-in-out infinite}
+  .fly span{display:inline-block;animation:flutter .5s ease-in-out infinite}
+  @keyframes flutter{50%{transform:scaleX(.55) rotate(-4deg)}}
+  @keyframes wander{
+    0%{transform:translate(0,0) rotate(-6deg)}
+    25%{transform:translate(22vw,-6vh) rotate(6deg)}
+    50%{transform:translate(46vw,4vh) rotate(-4deg)}
+    75%{transform:translate(24vw,-8vh) rotate(8deg)}
+    100%{transform:translate(0,0) rotate(-6deg)}}
+
+  /* Rolling hills at the bottom */
+  .hills{position:fixed;left:0;right:0;bottom:0;z-index:0;pointer-events:none;line-height:0}
+  .hills svg{display:block;width:100%;height:auto}
+  .hill-back{animation:sway 9s ease-in-out infinite}
+  .hill-mid{animation:sway 7s ease-in-out infinite reverse}
+  @keyframes sway{50%{transform:translateX(10px)}}
+
+  @media (prefers-reduced-motion: reduce){
+    body,.sun,.sun-rays,.cloud,.bird,.bird::before,.bird::after,
+    .seed,.fly,.fly span,.hill-back,.hill-mid{animation:none!important}
+    .seed{opacity:.5}
+  }
 
   .wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:22px 16px 60px}
 
@@ -137,6 +235,7 @@
   .empty{color:#a7b9c2;font-weight:700;text-align:center;padding:14px 0}
 
   .leave{display:block;text-align:center;margin-top:16px}
+  .leave[hidden]{display:none}
   .leave button{background:none;border:none;color:var(--muted);font-size:13px;font-weight:700;
     text-decoration:underline;padding:6px;box-shadow:none}
 
@@ -146,9 +245,38 @@
 </head>
 <body>
   <div class="sky" aria-hidden="true">
-    <div class="sun"></div>
+    <div class="sun-wrap">
+      <div class="sun-rays"></div>
+      <div class="sun"></div>
+    </div>
+
     <div class="cloud c1"></div>
     <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+
+    <div class="bird b1"></div>
+    <div class="bird b2"></div>
+    <div class="bird b3"></div>
+
+    <div class="fly" style="top:38%;left:10%;animation-delay:-3s"><span>🦋</span></div>
+    <div class="fly" style="top:62%;left:70%;font-size:18px;animation-delay:-11s;animation-duration:26s"><span>🦋</span></div>
+
+    <div class="seed" style="left:8%;animation-duration:14s;animation-delay:-2s"></div>
+    <div class="seed" style="left:20%;animation-duration:18s;animation-delay:-9s"></div>
+    <div class="seed" style="left:34%;animation-duration:16s;animation-delay:-5s"></div>
+    <div class="seed" style="left:48%;animation-duration:20s;animation-delay:-12s"></div>
+    <div class="seed" style="left:62%;animation-duration:15s;animation-delay:-7s"></div>
+    <div class="seed" style="left:76%;animation-duration:19s;animation-delay:-3s"></div>
+    <div class="seed" style="left:88%;animation-duration:17s;animation-delay:-10s"></div>
+  </div>
+
+  <div class="hills" aria-hidden="true">
+    <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="hill-back" fill="#bfeacb" d="M0,150 C240,90 420,120 720,110 C1020,100 1200,140 1440,110 L1440,220 L0,220 Z"/>
+      <path class="hill-mid" fill="#7fd39a" d="M0,175 C260,130 500,170 780,150 C1050,132 1240,175 1440,155 L1440,220 L0,220 Z"/>
+      <path fill="#48b673" d="M0,200 C300,175 560,205 860,190 C1120,178 1280,205 1440,192 L1440,220 L0,220 Z"/>
+    </svg>
   </div>
 
   <main class="wrap">
@@ -167,6 +295,7 @@
     <section class="card info">
       <div class="info-row"><span class="ico">📅</span><span class="lbl">Огноо:</span><span class="val tbd" id="date-val">дараа нь бөглөнө</span></div>
       <div class="info-row"><span class="ico">⏰</span><span class="lbl">Цаг:</span><span class="val tbd" id="time-val">дараа нь бөглөнө</span></div>
+      <div class="info-row"><span class="ico">🌙</span><span class="lbl">Хугацаа:</span><span class="val">3 хоног</span></div>
       <div class="info-row"><span class="ico">📍</span><span class="lbl">Байршил:</span><span class="val">Төөгөөгийн зуслан</span></div>
     </section>
 
@@ -236,10 +365,11 @@
   function myName(){ try{ return localStorage.getItem("zuslan_name")||""; }catch(e){ return ""; } }
   function setMyName(n){ try{ localStorage.setItem("zuslan_name", n); }catch(e){} }
 
+  function cp(s){ return Array.from(s||""); } // тэмдэгт бүрийг код цэгээр (emoji тасрахгүй)
   function initials(n){
-    var p = norm(n).split(" ");
-    if(p.length>=2) return (p[0][0]+p[1][0]).toUpperCase();
-    return norm(n).slice(0,2).toUpperCase();
+    var p = norm(n).split(" ").filter(Boolean);
+    if(p.length>=2) return ((cp(p[0])[0]||"") + (cp(p[1])[0]||"")).toUpperCase();
+    return cp(norm(n)).slice(0,2).join("").toUpperCase();
   }
   function colorFor(n){
     var h=0, s=key(n);
